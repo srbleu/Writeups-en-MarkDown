@@ -155,6 +155,9 @@ Subimos la revshell al FTP y nos conectamos a ella aprovechando que la hemos gen
 [+] 10.10.10.5 - exploit/windows/local/ntusermndragover: The target appears to be vulnerable.
 [+] 10.10.10.5 - exploit/windows/local/ppr_flatten_rec: The target appears to be vulnerable.
 ```
-Veamos si alguno se puede hacer de manera cómoda
-
+Voy a hacer una excepción y lo voy a explotar con Metasploit haciendo uso de este modulo
+```
+exploit/windows/local/ms10_015_kitrap0d
+```
+Y con eso ya podriamos leer las dos flags
 
