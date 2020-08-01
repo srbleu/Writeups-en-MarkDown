@@ -1,6 +1,6 @@
 # H@cktivityCon
 
-Pequeño writeup de las task que resolvi con el equipo Team Cybex durante el transcurso de este CTF donde quedamos en el top 91
+Pequeño writeup de las task que resolvi con el equipo Team Cybex durante el transcurso de este CTF donde quedamos en el top 91 faltarían los challenges de Scavenger Hunt
 ## Stego
 
 ### Spy vs. Spy
