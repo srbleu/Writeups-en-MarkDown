@@ -75,7 +75,7 @@ Mirando en el fuente encontramos varias cosas que me llaman la atención
         <div class="table_of_contents_item floating_element">
           <a href="#scope">Scope</a>
         </div>
-        <div class="table_of_contents_item floating_element">
+        <div class="table_of_contents_item floating_element">sando la 
           <a href="#files">Config files</a>
         </div>
       </div>
@@ -90,3 +90,7 @@ Accedamos a ese directorio y veremos que en el fuente hay un string encoded pero
 ```html
 <p>940d71e8655ac41efb5f8ab850668505b86dd64186a66e57d1483e7f5fe6fd81</p>
 ```
+
+Usando la web de md5hashing para hacer hash lookup obtenemos que la password hasheada es mypasswordforthatjob
+
+
