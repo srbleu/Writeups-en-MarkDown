@@ -1,7 +1,6 @@
 # Beep ![Avatar](https://www.hackthebox.eu/storage/avatars/995f465295b99869fce21ecadea4604c_thumb.png)
 
-### Initial Scan
-
+## Initial Scan
 ```
 22/tcp    open  ssh        OpenSSH 4.3 (protocol 2.0)
 | ssh-hostkey: 
@@ -33,9 +32,10 @@
 |_http-title: Site doesn't have a title (text/html; Charset=iso-8859-1)
 ```
 
-### Enumeration
+## Enumeration
 
-#### HTTP
+### HTTP
+#### Gobuster
 ```bash
 gobuster -u https://10.10.10.7/ -w /usr/share/dirb/wordlists/big.txt -t 100 -k
 /.htaccess (Status: 403)
@@ -73,7 +73,7 @@ FreePBX 2.10.0 / Elastix 2.2.0 - Remote Code Execution                          
 ----------------------------------------------------------------------------------------------------------------- ---------------------------------
 ```
 
-### Exploit
+## Exploit
 
 Vamos a probar el LFI
 ```URL
