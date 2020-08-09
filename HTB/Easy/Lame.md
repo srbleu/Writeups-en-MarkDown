@@ -1,6 +1,6 @@
 # Lame ![Avatar](https://www.hackthebox.eu/storage/avatars/fb2d9f98400e3c802a0d7145e125c4ff_thumb.png)     
 
-### Initial Scan
+## Initial Scan
 
 ```nmap
 21/tcp   open  ftp         vsftpd 2.3.4
@@ -24,8 +24,8 @@
 139/tcp  open  netbios-ssn Samba smbd 3.X - 4.X (workgroup: WORKGROUP)
 445/tcp  open  netbios-ssn Samba smbd 3.X - 4.X (workgroup: WORKGROUP)
 ```
-### Enumeration
-#### FTP
+## Enumeration
+### FTP
 El resultado de nmap comunica que el login anonimo esta habilitado en FTP , veamos si hay algo útil
 ```bash
 ftp 10.10.10.3
@@ -51,13 +51,13 @@ drwxr-xr-x    2 0        65534        4096 Mar 17  2010 ..
 ```
 La version de FTP es vulnerable a el CVE-2011-2523
 
-#### SMB 
+### SMB 
 Buscando la versión de Samba presente en la máquina con searchsploit encontramos que es vulnerable a:
 * Samba 3.0.20 < 3.0.25rc3 - 'Username' map script' Command Execution
 * Samba < 3.0.20 - Remote Heap Overflow
 * Samba 3.0.10 < 3.3.5 - Format String / Security Bypass 
 
-### Exploit
+## Exploit
 
 Probamos el exploit de la FTP Backdoor sin exito, parece que lo han parcheado
 Vamos a probar con el 'Username' map scrit Comand Execution
