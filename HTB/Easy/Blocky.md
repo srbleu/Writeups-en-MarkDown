@@ -1,4 +1,6 @@
-# Initial Scan
+# Beep ![Avatar](https://www.hackthebox.eu/storage/avatars/f412784c311bdf52c3655381d2c9cd21_thumb.png)
+
+## Initial Scan
 ```nmap
 21/tcp    open  ftp       ProFTPD 1.3.5a
 22/tcp    open  ssh       OpenSSH 7.2p2 Ubuntu 4ubuntu2.2 (Ubuntu Linux; protocol 2.0)
@@ -13,9 +15,9 @@
 25565/tcp open  minecraft Minecraft 1.11.2 (Protocol: 127, Message: A Minecraft Server, Users: 0/20)
 ```
 
-# Enum
-## HTTP
-### Gobuster
+## Enum
+### HTTP
+#### Gobuster
 ```
 /.htpasswd (Status: 403)
 /.htaccess (Status: 403)
@@ -28,7 +30,7 @@
 /wp-content (Status: 301)
 /wp-includes (Status: 301)
 ```
-### Wpscan
+#### Wpscan
 ```
 [i] User(s) Identified:
 
@@ -45,7 +47,7 @@
  | Confirmed By: Login Error Messages (Aggressive Detection)
 ```
 
-### Plugins
+#### Plugins
 
 Vine buscando cobre y encontre oro :v , iba a checekar por plugins vulnerables y sin embargo encontre un archivo.jar
 
@@ -62,7 +64,7 @@ public BlockyCore() {
     }
 ```
 
-### Phpmyadmin
+#### Phpmyadmin
 
 Como vimos antes haciendo gobusting encontramos phpmyadmin funcionando en el servidor, usamos las creds de antes y entramos sin problemas 
 
@@ -76,7 +78,7 @@ notch:$P$BiVoTj899ItS1EZnMhqeqVbrZI4Oq0/
 ```
 Faltarían dehashearlas, pero vamos a comprobar si las contraseñas se han usado en el ssh para algun usuario y efectivamente el user notch tiene la misma pass que en el phpmyadmin
 
-# Privesc
+## Privesc
 
 ```
 sudo -l
