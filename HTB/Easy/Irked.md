@@ -1,6 +1,6 @@
-# Beep ![Avatar](https://www.hackthebox.eu/storage/avatars/5fb846e75cf0db0c4b27e2dc64a9bf82_thumb.png)
+# Irked ![Avatar](https://www.hackthebox.eu/storage/avatars/5fb846e75cf0db0c4b27e2dc64a9bf82_thumb.png)
 
-### Initial Scan
+## Initial Scan
 
 ```
 22/tcp    open  ssh     OpenSSH 6.7p1 Debian 5+deb8u4 (protocol 2.0)
@@ -29,11 +29,11 @@
 65534/tcp open  irc     UnrealIRCd (Admin email djmardov@irked.htb)
 ```
 
-### Enumeration
+## Enumeration
 
 La versión del IRC presenta una vulnerabilidad (CVE 2010-2075) que permite RCE, exploremos esta via
 
-### Exploit
+## Exploit
 
 Encontramos un exploit que valga para este CVE y nos lo descargamos
 ```
@@ -76,7 +76,7 @@ Las creds quedan asi
 djmardov:Kab6h+m+bbp2J:HG
 ```
 Y con esto ya podemos logearnos y obtener la primera flag
-### Priv Escalation
+## Priv Escalation
 
 Buscamos SUID
 ```
@@ -131,3 +131,4 @@ Ahora solo nos queda leer la root flag
 root@irked:/root# wc -c root.txt 
 33 root.txt
 ```
+https://www.hackthebox.eu/storage/avatars/f412784c311bdf52c3655381d2c9cd21_thumb.png
