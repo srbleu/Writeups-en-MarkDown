@@ -1,5 +1,6 @@
 # Pickle Rick
 
+Fácil , poco realista, pero divertida
 ## Initial Scan 
 
 ```
