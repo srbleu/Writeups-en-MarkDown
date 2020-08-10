@@ -1,5 +1,6 @@
 # Gotta Catch'em All!
 
+Room facil bastante CTF y no aplica mucho al mundo real, pero bueh es divertida
 ## Initial Scan 
 ```
 22/tcp open  ssh     OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 (Ubuntu Linux; protocol 2.0)
