@@ -1,5 +1,6 @@
 # Fowsniff
 
+Máquina no muy complicada pero explota un par de concepros guapos, y el root esta guapo
 ## Initial Scan
 ```
 22/tcp  open  ssh     OpenSSH 7.2p2 Ubuntu 4ubuntu2.4 (Ubuntu Linux; protocol 2.0)
@@ -157,4 +158,33 @@ Ahora salimos y entramos de nuevo con la diferencia de que:
 ```
 User baksteen may run the following commands on fowsniff:
     (ALL : ALL) ALL
+```
+
+Y ya somos root.
+
+## Easter Egg
+
+```
+baksteen@fowsniff:~$ cat /var/www/html/security.txt 
+       WHAT SECURITY?
+
+            ''~``
+           ( o o )
++-----.oooO--(_)--Oooo.------+
+|                            |
+|          FOWSNIFF          |
+|            got             |
+|           PWN3D!!!         |
+|                            |
+|       .oooO                |
+|        (   )   Oooo.       |
++---------\ (----(   )-------+
+           \_)    ) /
+                 (_/
+
+
+Fowsniff Corp got pwn3d by B1gN1nj4!
+
+
+No one is safe from my 1337 skillz!
 ```
