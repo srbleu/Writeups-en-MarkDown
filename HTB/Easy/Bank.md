@@ -1,4 +1,4 @@
-# Beep ![Avatar](https://www.hackthebox.eu/storage/avatars/f02481d8d8020005f8d66115b3bfae11_thumb.png)
+# Bank ![Avatar](https://www.hackthebox.eu/storage/avatars/f02481d8d8020005f8d66115b3bfae11_thumb.png)
 
 ### Initial Scan
 
