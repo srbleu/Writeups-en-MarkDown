@@ -44,3 +44,11 @@ flag{is_only_gaem}
 root:x:0:0:root:/root:/bin/bash
 notch:x:1000:1000:Notch,,,:/home/notch:/bin/bash
 minecraft:x:1001:1001:Mine,,,:/home/minecraft:/bin/bash
+```
+Tras enumerar usuarios me di cuenta de qeu tenia acceso a los otros /home, en el de Notch hay un root.txt
+
+Lo podemos leer y así conseguir la otra flag
+
+```
+flag{poorly_configured_permissions}
+```
