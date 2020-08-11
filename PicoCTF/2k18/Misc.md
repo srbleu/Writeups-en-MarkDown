@@ -91,3 +91,12 @@ env | grep pico
 ```
 Flag:picoCTF{eNv1r0nM3nT_v4r14Bl3_fL4g_3758492}
 
+## SSH-Keyz
+## What base it is?
+## You can't see me
+## Absolutely Relative
+## In out error
+## Learn gdb
+## Roulette
+## Store
+## Script Me
