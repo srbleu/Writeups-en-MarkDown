@@ -181,7 +181,6 @@
 * Ignite
 * Vulnersity
 * Basic Pentesting
-* Anonforce
 * SimpleCTF 
 * Thompson
 * Library
