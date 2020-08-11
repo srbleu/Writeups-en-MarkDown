@@ -1,6 +1,6 @@
 # Bank ![Avatar](https://www.hackthebox.eu/storage/avatars/f02481d8d8020005f8d66115b3bfae11_thumb.png)
 
-### Initial Scan
+## Initial Scan
 
 ```
 22/tcp open  ssh     OpenSSH 6.6.1p1 Ubuntu 2ubuntu2.8 (Ubuntu Linux; protocol 2.0)
@@ -18,9 +18,9 @@
 Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 ```
 
-### Enumeration
+## Enumeration
 
-#### DNS
+### DNS
 
 La máquina tiene un servidor DNS en marcha, hagamos una consulta de zone transfer sobre bank.htb
 ```
@@ -40,7 +40,7 @@ bank.htb.		604800	IN	SOA	bank.htb. chris.bank.htb. 2 604800 86400 2419200 604800
 ;; XFR size: 6 records (messages 1, bytes 171)
 ```
 
-#### HTTP
+### HTTP
 
 Tenemos varias URL que añadir a /etc/hosts gracias al DNS, tambien es buena idea ir abriendo burpsuite y añadir ambas al target scope
 ```
@@ -90,7 +90,7 @@ Balance: 8842803 .
 ```
 Parece que alguien no verifico que la encriptacion funcionara , accedamos usando estas creds, una vez dentro tenenmos acceso a un menu para ver las transas y a un formulario para mandar tickets al soporte, pero en el fuente de la página del soporte hay algo sospechoso
 
-### Exploit
+## Exploit
 ```html
 <!-- [DEBUG] I added the file extension .htb to execute as php for debugging purposes only [DEBUG] -->
 ```
@@ -103,7 +103,7 @@ $ wc -c /home/chris/user.txt
 33 /home/chris/user.txt
 ```
 
-### Privesc
+## Privesc
 
 Consigamos una shell funcional antes que nada
 ```
