@@ -40,7 +40,6 @@
 * Blunder
 * Tabby
 ### Others
-* Sunday
 * Sense
 ## Medium
 ### Windows
