@@ -48,7 +48,7 @@ La contraseña para sunny es sunday
 ```
 [22022][ssh] host: 10.10.10.76   login: sunny   password: sunday
 ```
-AL ir a entrar nos da el siguiente error
+Al ir a entrar nos da el siguiente error
 ```
 Unable to negotiate with 10.10.10.76 port 22022: no matching key exchange method found. Their offer: gss-group1-sha1-toWM5Slw5Ew8Mqkay+al2g==,diffie-hellman-group-exchange-sha1,diffie-hellman-group1-sha1
 ```
