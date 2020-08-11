@@ -125,4 +125,12 @@ nobody4:*LK*:6445::::::
 sammy:$5$Ebkn8jlK$i6SSPa0.u7Gd.0oJOT4T421N2OvsfXqAT1vCoYUOigB:6445::::::
 sunny:$5$iRMbpnBv$Zh7s6D7ColnogCdiVE5Flz9vCZOMkUFxklRhhaShxv3:17636::::::
 ```
-Ponemos en marcha un HTTP server en local con el i hacemos el overwrite usando wget.
+Ponemos en marcha un HTTP server en local con el, y hacemos el overwrite usando wget.
+
+### Opcion 4 /root/troll
+
+```
+User sunny may run the following commands on this host:
+    (root) NOPASSWD: /root/troll
+```
+Podemos sobreescribir con nuestro /bin/bash , el de nuestra máquina ese binario usando la opcion de Post.
