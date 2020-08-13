@@ -243,7 +243,6 @@
 * Anonymous
 * Gatekeeper
 * Wonderland
-* Blog
 * Recovery
 * Attacktive Directory
 ### VIP
