@@ -202,7 +202,6 @@
 * Lian_Yu
 * Introduction to django
 * Break out the cage
-* Tartarus
 * Source
 * Overpass
 * Broklyn 99
