@@ -252,7 +252,6 @@
 * HackPark
 ## Hard
 ### Free
-* BookFace
 * Brainpan 1
 * Tweety CTF
 * Jigsaw
