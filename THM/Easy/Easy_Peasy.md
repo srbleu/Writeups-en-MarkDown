@@ -1,4 +1,5 @@
 # Easy Peasy
+El nombre cumple lo que promete
 ## Network scan
 
 ```nmap
@@ -21,8 +22,7 @@
 
 ## Enumeration 
 
-### HTTP nginx
-
+### HTTP
 El primer gobuster que usamos nos muestra un directorio llamado hidden, veamos si escaneando recursivamente encontramos algo
 ```
 gobuster -u http://10.10.172.4/hidden -w /usr/share/dirb/wordlists/big.txt -t 100
@@ -82,7 +82,7 @@ Mirando en el fuente encontramos varias cosas que me llaman la atención
 -->
 ```
 ```html
-	<p hidden>its encoded with ba....:ObsJmP173N2X6dOrAgEAL0Vu</p>
+<p hidden>its encoded with ba....:ObsJmP173N2X6dOrAgEAL0Vu</p>
 ```
 Esta encoded en base62 y el resultado es /n0th1ng3ls3m4tt3r
 
