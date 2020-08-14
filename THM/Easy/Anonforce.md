@@ -1,7 +1,7 @@
 # Anonforce
 Máquina sencilla, nada fuera de lo común excepto tal vez el punto de PGP
 
-Puntos Interesantes: PGP
+Interesantes: PGP
 ## Initial Scan
 ```
 21/tcp open  ftp     vsftpd 3.0.3
