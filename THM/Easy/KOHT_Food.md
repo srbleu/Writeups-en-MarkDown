@@ -60,7 +60,7 @@
 46969/tcp open  telnet  Linux telnetd
 ```
 ## Enum
-## Puerto 16109 
+### Puerto 16109 
 Aquí simplemente hay una foto, pero estos array me llevan a pensar que se ha usado steghide 
 ```
 %&'()*456789:CDEFGHIJSTUVWXYZcdefghijstuvwxyz
@@ -76,7 +76,7 @@ Veamos esas creds
 ```
 pasta:pastaisdynamic
 ```
-## Puerto 15065
+### Puerto 15065
 ```
 /monitor (Status: 301)
 ```
@@ -144,7 +144,7 @@ Si nos conectamos usando telnet obtenemos el siguiente string
 tccr:uwjsasqccywsg
 ```
 Parecen creds encodeadas
-```
+
 Aplicamos rot 12 y: 
 ```
 food:givemecookies
@@ -152,14 +152,26 @@ food:givemecookies
 Mas creds, si nos logeamos tenemos un acc con el $PATH en blanco , lo restauramos y tenemos sesión como food
 ## Privesc
 ### Opcion 1 Pwfeedback
+Cuando chekque en los usuarios si alguien podia ejecutar algo como sudo vi que me pedia las contraseñas y ponia * al escribir, esto implica que esta habilitado pwfeedback
 Como no tenemos soccat no nos vale el de exploit db pero tenemos la version sin soccat
 ```
 https://github.com/saleemrashid/sudo-cve-2019-18634
 ```
 ### Opcion 2 Screen 4.5.0
+Podemos explotar el siguiente SUID
+```
+/usr/bin/screen-4.5.0
+```
 
-### Opcion 3 Vim backdoor
-
+### Opcion 3 Vim Pass Change
+El siguiente SUID nos da un arbitrary file write    
+```
+/usr/bin/vim.basic
+```
+Generamos una password y la añadimos a /etc/passwd para el user root
+```
+mkpasswd -m sha-512 sup3rsecr3tp4ssw0rdf0rr00t
+```
 
 ## Flag Hunting
 ### Flag 1
@@ -199,5 +211,6 @@ Siendo root:
 /home/tryhackme/flag7
 ```
 ### Flag 7
-
+No encontrada
 ### Flag 8
+No encontrada
