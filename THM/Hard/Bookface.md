@@ -1,4 +1,5 @@
 # Bookface
+Máquina interesante, la clave para resolverla es centrarte en los servicios mas comunes en busca de fallos
 ## Initial Scan
 
 Tenemos abiertos casi todos los puertos, de hecho todos menos el ssh que esta filtrado
