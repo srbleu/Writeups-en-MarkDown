@@ -1,7 +1,7 @@
 # Dav
 Máquina sencillita y buena para empezar, el file upload es algo que se pasa por alto muchas veces al comprometer un apache
 
-Puntos intersantes: Curl File Upload
+Interesantes: Curl File Upload
 ## Initial Scan
 ```
 80/tcp open  http    Apache httpd 2.4.18 ((Ubuntu))
