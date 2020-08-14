@@ -1,7 +1,7 @@
 # Blaster
 Máquina windows sencillita, con un privesc curioso
 
-Importantes: CVE-2019-1388
+Interesantes: CVE-2019-1388
 ## Initial Scan
 ```
 80/tcp   open  http          Microsoft IIS httpd 10.0
