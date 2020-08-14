@@ -191,7 +191,6 @@
 * LazyAdmin
 * Plethora
 * Madness
-* Inclusion
 * The Cod Capper
 * Jack of all trades
 * Year of the rabbit
