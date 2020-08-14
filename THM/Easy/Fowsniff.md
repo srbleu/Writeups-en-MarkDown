@@ -1,6 +1,7 @@
 # Fowsniff
+Máquina no muy complicada pero explota un par de conceptos guapos, y el root esta guapo
 
-Máquina no muy complicada pero explota un par de concepros guapos, y el root esta guapo
+Interesante: POP3 enumeration , OSINT
 ## Initial Scan
 ```
 22/tcp  open  ssh     OpenSSH 7.2p2 Ubuntu 4ubuntu2.4 (Ubuntu Linux; protocol 2.0)
