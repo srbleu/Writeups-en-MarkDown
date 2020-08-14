@@ -199,7 +199,6 @@
 * Introduction to django
 * Break out the cage
 * Source
-* Overpass
 * Bounty Hacker
 ### VIP
 * ToolsRus
