@@ -1,5 +1,5 @@
 # Brooklyn Nine Nine
-Room bastante sencilla, el punto fuerte, tiene al menos dos vias para hacer Privesc distinat
+Room bastante sencilla, el punto fuerte, tiene al menos dos vias para hacer Privesc distintas
 ## Initial Scan
 ```
 21/tcp open  ftp     vsftpd 3.0.3
