@@ -183,7 +183,6 @@
 * Basic Pentesting
 * SimpleCTF 
 * Thompson
-* Library
 * Kenobi
 * Wgel CTF
 * Agent sudo
