@@ -1,5 +1,5 @@
 # JoyStick
-Room Sencillita , solo bruteforcing
+Room Sencillita ,un poco disgusting ya que es solo bruteforcing
 ## Initial Scan
 ```
 21/tcp open  ftp     vsftpd 3.0.3
