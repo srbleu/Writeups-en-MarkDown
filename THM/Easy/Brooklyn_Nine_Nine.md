@@ -1,4 +1,5 @@
 # Brooklyn Nine Nine
+Room bastante sencilla, el punto fuerte, tiene al menos dos vias para hacer Privesc distinat
 ## Initial Scan
 ```
 21/tcp open  ftp     vsftpd 3.0.3
@@ -132,4 +133,4 @@ gZBPQI5EwbUaWtnwEKqzTqT1G/+iYps8ExqUGj9lZWPnwNAEnWXiKJfTZF2lJyqz
 -----END RSA PRIVATE KEY-----
 
 ```
-Si la crackeamos veremos que la contraseña es jake1 , el problema es que nos pide pass y clave para entrar como amy, asi que no se de donde sacarla
+Si la crackeamos veremos que la contraseña es jake1 , el problema es que nos pide pass y clave para entrar como amy, asi que no se de donde sacarla, sin usar el hash de shadow.txt obtenible mediante la escalada a root usando cualquier otro usuario
