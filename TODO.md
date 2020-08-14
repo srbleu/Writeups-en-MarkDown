@@ -195,7 +195,6 @@
 * Jack of all trades
 * Year of the rabbit
 * Tony the tigerr
-* Anthem
 * Lian_Yu
 * Introduction to django
 * Break out the cage
