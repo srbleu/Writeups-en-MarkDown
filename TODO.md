@@ -184,7 +184,6 @@
 * SimpleCTF 
 * Thompson
 * Library
-* Dav
 * Kenobi
 * Wgel CTF
 * Agent sudo
@@ -274,6 +273,7 @@
 * Dave's Blog
 * Jeff
 * Ra
+* Anonymous Playground
 ### VIP
 * Jurassic Park
 * Jack
