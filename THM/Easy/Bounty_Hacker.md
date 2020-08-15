@@ -1,4 +1,6 @@
 # Bounty Hacker
+Esta guay pero por el nombre me esperaba otro tipo de cosa, en plan algo mas rollo bug bounty idk
+
 ## Initial Scan
 ```
 21/tcp open  ftp     vsftpd 3.0.3
