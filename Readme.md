@@ -186,7 +186,6 @@ Esto es una todo list, si la máquina es de HTB, o THM y no esta en la lista es 
 * SimpleCTF 
 * Thompson
 * Kenobi
-* Wgel CTF
 * Agent sudo
 * BluePrint
 * LazyAdmin
