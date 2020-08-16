@@ -194,7 +194,6 @@ Esto es una todo list, si la máquina es de HTB, o THM y no esta en la lista es 
 * Jack of all trades
 * Year of the rabbit
 * Tony the tigerr
-* Lian_Yu
 * Introduction to django
 * Break out the cage
 * Source
