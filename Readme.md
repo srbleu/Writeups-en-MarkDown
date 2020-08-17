@@ -21,7 +21,6 @@ Esto es una todo list, si la máquina es de HTB, o THM y no esta en la lista es 
 * ServMon
 * Buff
 ### Linux
-* Shocker
 * Nibbles
 * Valentine
 * Frolic
@@ -181,7 +180,6 @@ Esto es una todo list, si la máquina es de HTB, o THM y no esta en la lista es 
 ### Free
 * Ignite
 * Vulnersity
-* Basic Pentesting
 * SimpleCTF 
 * Thompson
 * Agent sudo
