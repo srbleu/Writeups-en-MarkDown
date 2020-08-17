@@ -54,3 +54,16 @@ groups merlin
 merlin : merlin adm cdrom sudo dip www-data plugdev lpadmin sambashare
 ```
 Podría ser otra manera interesante de escalar privilegios en esta máquina si quisieramos conseguir acceso real en lugar de simplemente leer la flag, pero parece que la contraseña utiliza no esta en rockyou.txt
+# Analisís de la intrusión
+### Creds por defecto
+El servidor webdav presenta las credenciales por defecto lo cual nos permitio el acceso incial
+### Unrestricted file upload
+El servidor webdabv nos permite subir archivos sin comprobar el tipo de archivo subido, esto nos llevo a conseguir un RCE
+### Privileged cat execution
+Ejecutar cat de manera privilegiada nos permite obtener acceso a archivos sensibles como /etc/shadow
+
+# Solución
+### Unrestricted file upload
+En el archivo de configuración de webdav se puede establecer que extensiones no esta permitido subir añadir a la lista .php , php2 , .php3 , .php4 , .php5 , .php6 , .php7 , .php8 , .php9 , .phtm , .aspx , .js , .war 
+### Privileged cat execution
+Permitir a un usuario regular ejecutar cat como root no parece algo con mucho sentido, la principal opción para mitigar esto seria eliminar este permiso si por algún casual se diese un caso en el que esto fuera necesario lo ideal seria introducir el comando entero en /etc/sudoers limitando bastante la explotación y aun asi lo optimo seria establecer una politica de Seccomp al respecto
