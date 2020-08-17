@@ -36,3 +36,17 @@ Y simplemente ejecutamos
 sudo socat stdin exec:/bin/sh
 ```
 Y listo, ya somos root
+
+# Analisís de la intrusión
+### LFI 
+El codigo utilizado permite indexar archivos de manera arbitraria 
+### Insecure password mangment
+Por algun motivo las cred de falconfeast estan en el passwd 
+### Privileged socat execution
+El usuario falconfeast puede utilizar socat como root, lo cual nos permitio elevar privilegios a root
+
+# Soluciones
+### LFI 
+Se podría corregir el codigo para evitar la lectura de archivos,asi como tmb seria recomendable limitar el acceso a ciertos archivos a www-data mediante el uso de AppArmor
+### Privileged socat execution
+Permitir a un usuario regular ejecutar socat como root no parece algo con mucho sentido, la principal opción para mitigar esto seria eliminar este permiso si por algún casual se diese un caso en el que esto fuera necesario lo ideal seria introducir el comando entero en /etc/sudoers limitando bastante la explotación y aun asi lo optimo seria establecer una politica de Seccomp al respecto
