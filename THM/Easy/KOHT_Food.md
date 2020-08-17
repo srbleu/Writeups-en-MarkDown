@@ -162,7 +162,10 @@ Podemos explotar el siguiente SUID
 ```
 /usr/bin/screen-4.5.0
 ```
-
+Aquí el exploit
+```
+https://www.exploit-db.com/exploits/41154
+```
 ### Opcion 3 Vim Pass Change
 El siguiente SUID nos da un arbitrary file write    
 ```
@@ -214,3 +217,30 @@ Siendo root:
 No encontrada
 ### Flag 8
 No encontrada
+
+# Analisís de la intrusión
+### Insecure password managment
+Esconder credenciales en un lugar accesible (aunque sea bajo esteganografia) es una mala práctica
+### RCE via api
+Establecer protecciones en la interaccion con la api solamente desde el lado del cliente permite a un atacatne malitencionado interacturar directamente con la api desprotegida y abusar de ella
+### Default Creds
+Se han mantenido las credenciales por defecto en el servicio mysql
+### CVE-2019-18634
+Pwfeedback esta habilitado en una versión antigua de sudo, lo que permite escalar privilegios 
+### screen4.5.0
+Hay un SUID habilitado en este binario que posee un exploit conocido
+### vim.basic SUID
+Hay un SUID activo en este programa lo que permite leer y editar archivos de manera atrbitraria
+
+# Solucion
+### RCE via api
+La api permite un RCE no autenticado a cualquiera mediante curl, para solventar esto podemos pedir algun tipo de autenticacion para el uso de la misma, o limitar los comandos que la api puede ejecutar en nuestro sistema
+### CVE-2019-18634 
+Parchear la version de sudo o deshabilitar el pwfeedback
+```
+sudo mv /etc/sudoers.d/pwfeedback /etc/sudoers.d/pwfeedback.disabled
+```
+### screen4.5.0
+Las opciones son parchear o deshabilitar el sistema
+### vim.basic SUID
+El parche seria deshabilitar el SUID en vim.basic
