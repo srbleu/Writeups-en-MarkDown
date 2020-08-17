@@ -85,7 +85,7 @@ Una mala decisión en cuanto a la configuración en el servidor FTP por parte de
 ## Notread
 La presencia de archivos potencialmente peligrosos en zonas donde otros usuarios puedan leer (aunque la llamemos notread) es negligente por parte de los administradores
 ## Password Police
-La politica de contraseñas usada es poco fuerte, tanto para el cifrado gpg como para el propio root nos permite realizar un ataque por fuerza bruta exitoso con relativamente poco recursos
+La politica de contraseñas usada es poco fuerte, tanto para el cifrado gpg como para el propio root, lo que nos permite realizar un ataque por fuerza bruta exitoso con relativamente poco recursos
 
 # Soluciones 
 ## Limitar el acceso anonimo
