@@ -56,6 +56,6 @@ Definivamente posterar la contraseña del administrador en texto plano en un com
 ### CVE-2019-1388
 La máquina objetivo era vulnerable a dicho CVE lo que nos permitio elevar privilegios de manera local, ya que no esta parcheado
 
-# Solucionesmitigacionesmitigacionesmitigaciones
+# Soluciones
 ### CVE-2019-1388
 El sistema operativo no esta actualizado, simplemente actualizando a una versión más reciente
