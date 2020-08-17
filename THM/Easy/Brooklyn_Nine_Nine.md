@@ -134,3 +134,22 @@ gZBPQI5EwbUaWtnwEKqzTqT1G/+iYps8ExqUGj9lZWPnwNAEnWXiKJfTZF2lJyqz
 
 ```
 Si la crackeamos veremos que la contraseña es jake1 , el problema es que nos pide pass y clave para entrar como amy, asi que no se de donde sacarla, sin usar el hash de shadow.txt obtenible mediante la escalada a root usando cualquier otro usuario
+
+# Analisis de la intrusión
+### FTP login anonymous habilitado
+Una mala decisión en cuanto a la configuración en el servidor FTP por parte del administrador (habilitar el login anonymous) , nos permitio acceder a  archivos sensibles, aunque en este caso se habian tomado medidas de mitigación sobre el acceso del ftp a la máquina.
+### SSH Bruteforcing allowed
+No existe ningún tipo de medida para evitar ataques por fuerza bruta contra el servidor esto unido a una password police poco segura nos permitio el acceso.
+### Contraseñas visibles
+Guardar una contraseña en una foto accesible por mucha esteganografía que se use en ellas, es definitivamente mala idea.
+### Privileged nano execution
+La posibilidad de ejecutar nano de manera privilegiada puede conducir a un atacante a elevar privilegios en un sistema.
+### Privileged less execution
+La posibilidad de ejecutar less de manera privilegiada puede conducir a un atacante a elevar privilegios en un sistema.
+# Solucion
+### SSH Bruteforcing allowed
+La instalación de un sistema de prevención como fail2ban evitaria la posibilidad de realizar un ataque por fuerza bruta al servicio ssh.
+### Privileged nano execution
+Permitir a un usuario regular ejecutar nano como root no parece algo con mucho sentido, la principal opción para mitigar esto seria eliminar este permiso si por algún casual se diese un caso en el que esto fuera necesario lo ideal seria introducir el comando entero en /etc/sudoers limitando bastante la explotación y aun asi lo optimo seria establecer una politica de Seccomp al respecto.
+### Privileged less execution
+Permitir a un usuario regular ejecutar less como root no parece algo con mucho sentido, la principal opción para mitigar esto seria eliminar este permiso si por algún casual se diese un caso en el que esto fuera necesario lo ideal seria introducir el comando entero en /etc/sudoers limitando bastante la explotación y aun asi lo optimo seria establecer una politica de Seccomp al respecto.
