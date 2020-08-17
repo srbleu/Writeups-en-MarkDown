@@ -191,7 +191,6 @@ Esto es una todo list, si la máquina es de HTB, o THM y no esta en la lista es 
 * Madness
 * The Cod Capper
 * Jack of all trades
-* Year of the rabbit
 * Tony the tigerr
 * Introduction to django
 * Break out the cage
