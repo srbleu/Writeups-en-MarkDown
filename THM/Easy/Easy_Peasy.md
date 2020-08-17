@@ -21,7 +21,6 @@ El nombre cumple lo que promete
 ```
 
 ## Enumeration 
-
 ### HTTP
 El primer gobuster que usamos nos muestra un directorio llamado hidden, veamos si escaneando recursivamente encontramos algo
 ```
@@ -150,3 +149,14 @@ cat .root.txt
 flag{63a9f0ea7bb98050796b649e85481845}
 ```
 
+# Analisís de la intrusión
+### Credenciales en lugares poco seguras
+Esconder credenciales en lugares poco seguros aunque se haya aplicado esteganografia es una mala practica
+### Criptografía poco segura
+Codificar la contraseña en binario no es un metodo seguro para proteger dicha contraseña
+### Insecure cronjob
+Ejecutar de manera privilegiada un script sh al que un usuario común tiene privilegios de edición es mala idea
+
+# Soluciones
+### Insecure cronjob
+En caso de que dicho cronjob sea necesario, el administrador deberia tomar medidad respecto a la accesibilidad de ese cronjob , ya sea o bien otorgando al dueño de ese cronjob privilegios justos y necesarios para la ejecución del comando necesario, o bien mediante la eliminación de permisos de edición sobre ese archivo a los usuarios que no sean root
