@@ -46,7 +46,16 @@ LOCAL                                  Well-known group S-1-2-0      Mandatory g
 NT AUTHORITY\NTLM Authentication       Well-known group S-1-5-64-10  Mandatory group, Enabled by default, Enabled group                       
 Mandatory Label\Medium Mandatory Level Label            S-1-16-8192   
 ```
-Parece que tenemos el hhupd dentro del sistema, este archivo es el necesario para explotar el CVE-2019-1388 
+Parece que ya tenemos el hhupd dentro del sistema, este archivo es el necesario para explotar el CVE-2019-1388 
 ```
 https://www.youtube.com/watch?v=3BQKpPNlTSo
 ```
+# Analisís de la intrusión
+### Gestión de contraseñas 
+Definivamente posterar la contraseña del administrador en texto plano en un comentario de la web fue una terrible idea 
+### CVE-2019-1388
+La máquina objetivo era vulnerable a dicho CVE lo que nos permitio elevar privilegios de manera local, ya que no esta parcheado
+
+# Solucionesmitigacionesmitigacionesmitigaciones
+### CVE-2019-1388
+El sistema operativo no esta actualizado, simplemente actualizando a una versión más reciente
