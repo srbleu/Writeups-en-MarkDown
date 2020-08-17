@@ -52,3 +52,12 @@ Lo podemos leer y así conseguir la otra flag
 ```
 flag{poorly_configured_permissions}
 ```
+# Analisis de la intrusión
+### SSH Bruteforcing allowed
+No existe ningún tipo de medida para evitar ataques por fuerza bruta contra el servidor 
+### Bad password police
+Se ha permitido el uso de contraseñas poco seguras a los usurios lo cual ha permitido ejecutar un ataque de fuerza bruta con exito
+
+# Soluciones
+### SSH Bruteforcing allowed
+Utilizar algún tipo de protección como fail2ban en el servidor sería altamaente recomendables de cara a evitar este tipo de ataques
