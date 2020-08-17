@@ -48,7 +48,7 @@ Interesantes: PGP
 ```
 ## Enum
 
-Tenemos un ftp login anonymous permitido
+Tenemos un ftp login anonymous permitido esto nos permite leer archivos en la máquina sin ningún tipo de credenciales
 
 Asi obtenemos la primera flag
 ```
@@ -57,7 +57,7 @@ Asi obtenemos la primera flag
 
 ## Privesc
 
-Encontramos el siguiente directorio
+Si seguimos buscando en el servidor desde el ftp encontramos el siguiente directorio en /
 ```
 drwxrwxrwx    2 1000     1000         4096 Aug 11  2019 notread
 ```
@@ -79,7 +79,7 @@ La password para el root es hikari, ya solo queda conectarnos y leer la root.txt
 ```
 ssh root@10.10.90.218
 ```
-## Que ha pasado aquí??
+# Que ha pasado aquí??
 ## FTP login anonymous habilitado
 Una mala decisión en cuanto a la configuración en el servidor FTP por parte del administrador (habilitar el login anonymous) , nos permitio listar archivos de manera arbitraria dentro del servidor (aunque con unos privilegios limitados)
 ## Notread
@@ -87,7 +87,7 @@ La presencia de archivos potencialmente peligrosos en zonas donde otros usuarios
 ## Password Police
 La politica de contraseñas usada es poco fuerte, tanto para el cifrado gpg como para el propio root nos permite realizar un ataque por fuerza bruta exitoso con relativamente poco recursos
 
-## Soluciones 
+# Soluciones 
 ## Limitar el acceso anonimo
 Si bien puede ser necesario mantener un servidor FTP con acceso anonimo, siempre es buena idea limitar las zonas en las que el usuario conectado mediante FTP puede acceder para ello siendo vsftpd podemos hacer lo siguiente
 ```
