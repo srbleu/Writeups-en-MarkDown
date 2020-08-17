@@ -79,7 +79,7 @@ La password para el root es hikari, ya solo queda conectarnos y leer la root.txt
 ```
 ssh root@10.10.90.218
 ```
-# Que ha pasado aquí??
+# Analisis de la intrusión
 ### FTP login anonymous habilitado
 Una mala decisión en cuanto a la configuración en el servidor FTP por parte del administrador (habilitar el login anonymous) , nos permitio listar archivos de manera arbitraria dentro del servidor (aunque con unos privilegios limitados)
 ### Notread
