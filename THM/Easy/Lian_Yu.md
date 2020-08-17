@@ -88,3 +88,10 @@ sudo pkexec /bin/bash
 ```
 Y ya tenemos shell como root
 
+# Analisis de la intrusiom
+### Pkexec priveleged execution
+El usuario slade puede utilizar pkexec como root, lo cual nos permitio elevar privilegios a root
+
+# Solucion
+### Pkexec priveleged execution
+Permitir a un usuario regular ejecutar pkexec como root no parece algo con mucho sentido, la principal opción para mitigar esto seria eliminar este permiso si por algún casual se diese un caso en el que esto fuera necesario lo ideal seria introducir el comando entero en /etc/sudoers limitando bastante la explotación y aun asi lo optimo seria establecer una politica de Seccomp al respecto
