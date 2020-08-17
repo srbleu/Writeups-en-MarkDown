@@ -54,3 +54,11 @@ Vamos a probar en el CMS las creds y vemos que finciona, tras un rato intententa
 En C:\ hay una carpeta oculta llamada backup que contiene un archivo llamado restore, tenemos permisos para cambiar permisos pero no para leerlo, si cambiamos los permisos y nos damos permiso de Lectura tendremos la pass del admi
 
 Ya solo quedaria autenticarnos para leer la flag
+
+# Analisis de la intrusión
+## Information leak
+Poner las contraseñas en un lugar como robots.txt aunque no diga de manera explicita que es una contraseña es evidentemente una mala práctica que debe ser evitada.
+## Reutilización de contraseñas
+Utilizar la misma contraseña para el CMS que para el usuario en la máquina conlleva que si se compromete un servicio al atacante le sea mas sencillo comprometer la máquina entera
+## Backup
+La existencia de un backup de la contraseña del administrador en una carpeta perteneciente a un usuario sin privilegios conlleva que en caso de comprometer la cuenta de este usuario , facilite el compromiso de la máquina entera
