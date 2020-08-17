@@ -1,4 +1,4 @@
-# Shocker
+# Shocker ![Avatar](https://www.hackthebox.eu/storage/avatars/efef52a0fb63d9c8db0ab6e50cb6ac79_thumb.png)
 Maquina sencilla centrada en una vulnerabilidad real, la llamada Shellshock
 
 Interesante: Shellshock
@@ -39,6 +39,6 @@ User shelly may run the following commands on Shocker:
 ```
 Ejecutamos lo siguiente
 ```
-    sudo perl -e 'exec "/bin/bash";'
+sudo perl -e 'exec "/bin/bash";'
 ```
 Y obtenemos shell como root
