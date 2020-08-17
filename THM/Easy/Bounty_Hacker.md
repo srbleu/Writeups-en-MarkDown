@@ -56,3 +56,16 @@ Ejecutamos
 sudo tar -cf /dev/null /dev/null --checkpoint=1 --checkpoint-action=exec=/bin/bash
 ```
 Y listo
+
+# Analisís de la intrusión
+### FTP login anonymous habilitado
+Una mala decisión en cuanto a la configuración en el servidor FTP por parte del administrador (habilitar el login anonymous) , nos permitio acceder a  archivos sensibles, aunque en este caso se habian tomado medidas de mitigación
+### SSH Bruteforcing allowed
+No existe ningún tipo de medida para evitar ataques por fuerza bruta contra el servidor, si bien la contraseña es segura,  teoricamente sin protecciones al respecto sería posible obtener acceso aunque el tiempo sería elevado
+### Privileged tar execuition
+El usuario lin puede utilizar tar como root, lo cual nos permitio elevar privilegios a root
+# Soluciones
+### SSH Bruteforcing allowed
+Si bien la contraseña es robusta utilizar algún tipo de protección como fail2ban en el servidor sería altamaente recomendables
+### Privileged tar execution
+Permitir a un usuario regular ejecutar tar como root no parece algo con mucho sentido, la principal opción para mitigar esto seria eliminar este permiso si por algún casual se diese un caso en el que esto fuera necesario lo ideal seria introducir el comando entero en /etc/sudoers limitando bastante la explotación y aun asi lo optimo seria establecer una politica de Seccomp al respecto
