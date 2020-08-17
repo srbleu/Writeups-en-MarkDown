@@ -80,15 +80,15 @@ La password para el root es hikari, ya solo queda conectarnos y leer la root.txt
 ssh root@10.10.90.218
 ```
 # Que ha pasado aquí??
-## FTP login anonymous habilitado
+### FTP login anonymous habilitado
 Una mala decisión en cuanto a la configuración en el servidor FTP por parte del administrador (habilitar el login anonymous) , nos permitio listar archivos de manera arbitraria dentro del servidor (aunque con unos privilegios limitados)
-## Notread
+### Notread
 La presencia de archivos potencialmente peligrosos en zonas donde otros usuarios puedan leer (aunque la llamemos notread) es negligente por parte de los administradores
-## Password Police
+### Password Police
 La politica de contraseñas usada es poco fuerte, tanto para el cifrado gpg como para el propio root, lo que nos permite realizar un ataque por fuerza bruta exitoso con relativamente poco recursos
 
 # Soluciones 
-## Limitar el acceso anonimo
+### Limitar el acceso anonimo
 Si bien puede ser necesario mantener un servidor FTP con acceso anonimo, siempre es buena idea limitar las zonas en las que el usuario conectado mediante FTP puede acceder para ello siendo vsftpd podemos hacer lo siguiente
 ```
 # Verificamos que este ajuste este asi chroot_local_user=YES
