@@ -59,6 +59,8 @@ Ya solo quedaria autenticarnos para leer la flag
 ## Information leak
 Poner las contraseñas en un lugar como robots.txt aunque no diga de manera explicita que es una contraseña es evidentemente una mala práctica que debe ser evitada.
 ## Reutilización de contraseñas
-Utilizar la misma contraseña para el CMS que para el usuario en la máquina conlleva que si se compromete un servicio al atacante le sea mas sencillo comprometer la máquina entera
+Utilizar la misma contraseña para el CMS que para el usuario en la máquina conlleva que si se compromete un servicio al atacante le sea mas sencillo comprometer la máquina entera.
+## Formato de usuarios predecible
+El tener un formato para los nombres de usuario si bien puede ser una buena idea a nivel administrativo, permite averiguar otros usuarios aumentando las posibilidades de exito de un ataque por fuera bruta
 ## Backup
 La existencia de un backup de la contraseña del administrador en una carpeta perteneciente a un usuario sin privilegios conlleva que en caso de comprometer la cuenta de este usuario , facilite el compromiso de la máquina entera
