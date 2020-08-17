@@ -21,7 +21,6 @@ Interesante: POP3 enumeration , OSINT
 ```
 
 ## Enum
-
 ### HTTP
 
 ```
@@ -35,7 +34,6 @@ Interesante: POP3 enumeration , OSINT
 Parece que aquí esta todo correcto, veamos las RRSS de la empresa
 
 ### RRSS
-
 ```
 https://twitter.com/fowsniffcorp
 ```
@@ -189,3 +187,17 @@ Fowsniff Corp got pwn3d by B1gN1nj4!
 
 No one is safe from my 1337 skillz!
 ```
+# Analisis de la intrusión
+### Bad pwn managment
+Parece que la compañia ha sido pwneada, y el autor ha leakeado los hashes de las contraseñas de los empleados del sistema
+### Bad Password police
+Algunas de las contraseñas de los empleados estan presentes en diccionarios comunes
+### Defaul pass
+Tras el pwn la contraseña por defecto de todos los empleados ha sido cambiada a la misma y alguno de los usuarios noo la ha cambiado de nuevo
+### Privileged writable script
+Existe un archivo que se ejecuta como root (00-header) al logease en el sistema , este archivo llama a un archivo llamdo cube.sh sobre el cual tenemos privlegios de escritura, esto conlleva que el mismo se un vector de Privesc
+# Solución
+### Bas pwn managment
+Tras un ciberataque a la compañia todas las contraseás deberian ser cambiadas de todos los servicios cosa que no se llevo a cabo
+### Privileged writable scrip
+El script cube.sh no deberia tener permisos de edición para usuarios normales, de hecho la mejor solucion es que dicho script estuviera directamente escrito en el 00-header
