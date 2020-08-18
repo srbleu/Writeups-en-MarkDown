@@ -44,3 +44,22 @@ import os
 os.system('/bin/bash')
 ```
 Y ya seriamos root
+
+# Analisís de la intrusión
+### SSH Bruteforcing allowed
+El no existir ningún tipo de proteccion anti bruteforce de cara a el ssh nos permitió la entrada incial en la máquina
+### Bad Password policie
+La política de contraseñas es poco segura ya que se permite a los usuarios usar contraseñas presentes en los diccionarios mas comunes
+### Privileged script execution for regular users
+El script se ejecuta como root en una carpeta en la cual el usuario tiene permiso para eliminar y crear archivos, aunque no tenga permisos de edicion directos en el archivo siempre puede eliminarlo y crear otro con el mismo nombre de modo que se ejecutaria sin problemas
+
+# Soluciones
+### SSH Bruteforcing allowed
+La instalación y configuración de un servicio como fail2ban previene la posibilidad de bruteforcear las creds, eliminando esta amenaza
+### Privileged script execution for regular users
+En caso de ser necesaria la ejecución de este script por parte del usuario, lo ideal seria moverlo a otra ubicación donde el usuario no la pueda eliminar por ejemplo la siguiente configuración
+```
+ NOPASSWD: /usr/bin/python3 /root/bak.py
+ ```
+ Permitira ejecutar el backup que se estaba ejecutando sin tener ese problema presente, mas alla de esto siendo un backup de la web del servidor la mejor opcion seria ejecutarlo de manera periodica mediante un cronjob añadido al crontab
+ 
