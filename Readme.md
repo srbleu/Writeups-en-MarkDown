@@ -188,7 +188,7 @@ Esto es una todo list, si la máquina es de HTB, o THM y no esta en la lista es 
 * Plethora
 * Madness
 * The Cod Capper
-* Jack of all trades
+* CC: Pen Testing
 * Tony the tigerr
 * Introduction to django
 * Break out the cage
