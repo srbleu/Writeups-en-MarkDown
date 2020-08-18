@@ -88,6 +88,6 @@ def article():
 
     return render_template('article.html', template=template)
 ```
-Con esto tenemos bastante solucionado 
+Con esto tenemos bastante solucionado ya que los principales metodos funcionales para indexar archivos mediante LFI quedan cubiertos
 ### Privileged socat execution
 Permitir a un usuario regular ejecutar socat como root no parece algo con mucho sentido, la principal opción para mitigar esto seria eliminar este permiso si por algún casual se diese un caso en el que esto fuera necesario lo ideal seria introducir el comando entero en /etc/sudoers limitando bastante la explotación y aun asi lo optimo seria establecer una politica de Seccomp al respecto
