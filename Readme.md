@@ -180,7 +180,6 @@ Esto es una todo list, si la máquina es de HTB, o THM y no esta en la lista es 
 ### Free
 * Ignite
 * SimpleCTF 
-* Thompson
 * Agent sudo
 * BluePrint
 * LazyAdmin
@@ -188,7 +187,7 @@ Esto es una todo list, si la máquina es de HTB, o THM y no esta en la lista es 
 * Madness
 * The Cod Capper
 * CC: Pen Testing
-* Tony the tigerr
+* Tony the tiger
 * Introduction to django
 * Source
 ### VIP
