@@ -1,4 +1,4 @@
-Esto es una todo list, si la máquina es de HTB, o THM y no esta en la lista es que tengo por aquí el writeup (OJO solo máquinas)
+Esto es una todo list, si la máquina es de HTB, o THM y no esta en la lista es que tengo por aquí el writeup (OJO solo máquinas los challs era mas feo organizarlos)
 # Hackthebox 
 ## Easy 
 ### Windows
@@ -186,7 +186,6 @@ Esto es una todo list, si la máquina es de HTB, o THM y no esta en la lista es 
 * Plethora
 * Madness
 * The Cod Capper
-* CC: Pen Testing
 * Tony the tiger
 * Introduction to django
 * Source
