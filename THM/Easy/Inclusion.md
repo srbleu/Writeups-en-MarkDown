@@ -48,5 +48,46 @@ El usuario falconfeast puede utilizar socat como root, lo cual nos permitio elev
 # Soluciones
 ### LFI 
 Se podría corregir el codigo para evitar la lectura de archivos,asi como tmb seria recomendable limitar el acceso a ciertos archivos a www-data mediante el uso de AppArmor
+#### Código
+La función culpable es la siguiente
+```python
+@app.route('/article', methods=['GET'])
+def article():
+
+    if 'name' in request.args:
+        page = request.args.get('name')
+    else:
+        page = 'article'
+
+    try:
+        template = open('/home/falconfeast/articles/{}'.format(page)).read()
+        return render_template('show.html', data=template)
+    except Exception as e:
+        template = e
+
+    return render_template('article.html', template=template)
+```
+Si hacemos unos pequeños ajustes podemos evitar los principales vectores de ataque LFI sin problema
+```python
+@app.route('/article', methods=['GET'])
+def article():
+
+    if 'name' in request.args:
+        page = request.args.get('name')
+    else:
+        page = 'article'
+
+    try:
+        if(("/" in page ) OR (if "%252e" in page) OR (if '\' in page)):
+            pass
+        else:
+            template = open('/home/falconfeast/articles/{}'.format(page)).read()
+            return render_template('show.html', data=template)
+    except Exception as e:
+        template = e
+
+    return render_template('article.html', template=template)
+```
+Con esto tenemos bastante solucionado 
 ### Privileged socat execution
 Permitir a un usuario regular ejecutar socat como root no parece algo con mucho sentido, la principal opción para mitigar esto seria eliminar este permiso si por algún casual se diese un caso en el que esto fuera necesario lo ideal seria introducir el comando entero en /etc/sudoers limitando bastante la explotación y aun asi lo optimo seria establecer una politica de Seccomp al respecto
