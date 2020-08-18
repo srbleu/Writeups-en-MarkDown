@@ -113,3 +113,27 @@ PATH=/tmp:$PATH
  ./../usr/bin/menu 
 ```
 Y ya tenemos shell como root
+
+# Analisis de la intrusion
+### SMB Null Sesion
+La Null Sesion esta habilitada, de modo que tenemos acceso a archivos compartidos con información sensible sin necesidad de tipo alguno de autenticación
+### CVE 2015-3306
+El sistema permite copiar archivos sin necesidad de estar autenticados
+### SUID 
+Existe un SUID en el archivo de /usr/bin/menu lo que permite la ejecución de un pequeño subset de comandos como root
+### Path Manipulation
+A la hora de hacer las llamadas a funciones del sistema no se utiliza la ruta completa, lo que permite manipular el PATH , ejecutando cualquier comando de esta manera.
+
+# Solucion
+### SMB Null Sesion
+Añadir las dos siguientes lineas a smb.conf deberia mitigar esta enumeracion lo cual dificultaria el reconocimiento de la misma por parte de los atacantes
+```
+map to guest = Never
+restrict anonymous = 2
+```
+### CVE 2015-3306
+Para mitigar el impacto lo mejor que podemos hacer es parchear a la siguiente versión, si no fuese posible retirar permisos de lectura a frpuser a archivos criticos, o al menos el de escritura en zonas que pueden ser leidas desde el exterior
+### SUID
+El SUID aqui es inecesario ya que los 3 binariso pueden ser usados como usuario común sin problema, lo ideal seria retirarlo
+### Path Manipulation
+Para solventar esto se puede hacer 2 cosas distintas , la primera en el binario de menu cambiar las rutas por rutas absolutas de modo que no se pueda ejecutar en otro path , la otra opcion es hacer del path una variable de solo lectura
