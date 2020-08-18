@@ -78,11 +78,11 @@ def article():
         page = 'article'
 
     try:
-        if(("/" in page ) OR (if "%252e" in page) OR (if '\' in page)):
-            pass
+        if(("/" in page ) or ("%252e" in page) or ('\\' in page)):
+                pass
         else:
-            template = open('/home/falconfeast/articles/{}'.format(page)).read()
-            return render_template('show.html', data=template)
+                template = open('/home/falconfeast/articles/{}'.format(page)).read()
+                return render_template('show.html', data=template)
     except Exception as e:
         template = e
 
