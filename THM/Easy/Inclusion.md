@@ -1,6 +1,7 @@
 # Inclusion
 Room sencillita para explotar un LFI
 
+Interesantes: Parcheo de vuln LFI en flask
 ## Initial Scan
 ```
 22/tcp open  ssh     OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
