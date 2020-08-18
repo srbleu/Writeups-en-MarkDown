@@ -1,6 +1,5 @@
 # Year of the Rabbit
 Es bastante CTF pero a pesar de lo CTF que es, la máquina es interesante
-
 Interesantes: CVE-2019-14287
 ## Initial Scan
 ```
@@ -113,3 +112,16 @@ sudo -u#-1 /usr/bin/vi /home/gwendoline/user.txt
 > :!/bin/bash
 ```
 Y ya tenemos shell como root
+
+# Analisís de la intrusión
+### Sensible data leak
+Las credenciales se han visto expuestas por malas decisiones y debiles metodos criptograficos
+### CVE-2019-14287
+Este CVE permite abusar de la ejecución de archivos con la siguiente restrincion:
+```
+(ALL, !root)
+```
+Para ejecutar el comando como root mediante el uso de uid -1  o 4294967295
+# Solucion
+### CVE-2019-14287
+Para remediar este fallo la mejor opción es updatear a una versión más reciente de sudo, donde la vuln haya sido corregida
