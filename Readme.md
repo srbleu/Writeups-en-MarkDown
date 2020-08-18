@@ -179,7 +179,6 @@ Esto es una todo list, si la máquina es de HTB, o THM y no esta en la lista es 
 ## Easy
 ### Free
 * Ignite
-* Vulnersity
 * SimpleCTF 
 * Thompson
 * Agent sudo
@@ -193,6 +192,7 @@ Esto es una todo list, si la máquina es de HTB, o THM y no esta en la lista es 
 * Introduction to django
 * Source
 ### VIP
+* Vulnersity
 * ToolsRus
 * Game Zone
 * Skynet
