@@ -191,7 +191,6 @@ Esto es una todo list, si la máquina es de HTB, o THM y no esta en la lista es 
 * CC: Pen Testing
 * Tony the tigerr
 * Introduction to django
-* Break out the cage
 * Source
 ### VIP
 * ToolsRus
