@@ -46,6 +46,17 @@ User jake may run the following commands on smag:
 ```
 Ejecutamos lo siguiente:
 ```
-sudo apt-get update -o APT::Update::Pre-Invoke::=/bin/sh
+sudo apt-get update -o APT::Update::Pre-Invoke::=/bin/bash
 ```
 Tenemos shell as root
+
+# Analisis de la intrusion
+### Information Leak
+Hay trazas de red con información sensible expuestas lo que nos permitio obtener credenciales para acceder a la administracion del sistema
+### RCE endpoint
+En produccion deberian tener en cuenta que un endpoint para ejecutar comandos de manera remota desde la web es mala idea 
+### Privileged Apt-get Command execution
+La posibilidad de ejecutar este comando nos condujo a elevar privilegios de jake a sudo
+# Solucion
+### Privileged Apt-get Command execution
+Si bien tener permisos para ejecutar apt-get en un usuario común es algo interesante de cara a actualizar el sistema, o añadir programas nuevos al servidor, es mejor que pida aunque sea la contraseña del usuario, o especificar los casos en sudoers de modo que no podamos ejecutar comandos arbitrarios via aptget
