@@ -58,4 +58,4 @@ La máquina objetivo era vulnerable a dicho CVE lo que nos permitio elevar privi
 
 # Soluciones
 ### CVE-2019-1388
-El sistema operativo no esta actualizado, simplemente actualizando a una versión más reciente
+El sistema operativo no esta actualizado, simplemente actualizando a una versión más reciente esta explotación debería ser mitigada
