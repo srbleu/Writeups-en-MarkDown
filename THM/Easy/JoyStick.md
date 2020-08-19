@@ -38,7 +38,7 @@ Accedemos con las creds y ya tenemos acceso a la primera flag
 ```
 flag{is_only_gaem}
 ```
-### Privesc
+## Privesc
 
 ```
 root:x:0:0:root:/root:/bin/bash
