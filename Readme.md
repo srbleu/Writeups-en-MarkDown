@@ -183,7 +183,6 @@ Esto es una todo list, si la máquina es de HTB, o THM y no esta en la lista es 
 * Agent sudo
 * BluePrint
 * LazyAdmin
-* Plethora
 * Madness
 * The Cod Capper
 * Tony the tiger
