@@ -146,3 +146,10 @@ Tenemos shell como root, ya solo queda coger la flag
 # wc -c /root/root.txt
 33 /root/root.txt
 ```
+# Analisis de la intrusión 
+### Sensible data exposure
+Información sensible sobre los usuarios (aunque encriptada) ha sido expuesta, esto sumado a un fallo en uno de los casos nos permitio entrar en el servicio 
+### Unrestricted file upload
+Se permite subir y ejecutar archivos php bajo la extension htb de manera que podemos obtener un RCE
+### Dangerous bin
+El binario /var/htb/bin/emergency tiene el SUID habilitado por root y permite escalar privilegios en el sistema
