@@ -88,3 +88,13 @@ root@blog:/home/bjoel# id
 uid=0(root) gid=33(www-data) groups=33(www-data)
 ```
 Y listo
+
+# Analisís de la intrusión
+### Bad password policie 
+La contraseña usada en WP se encuentra presente en rockyou
+### WP bruteforce allowed
+Existe un plugin que bloquea una IP tras N intentos fallidos pero no esta activo
+### Vulnerable WP version
+La versión de wordpress usada presenta una vuln RCE autentificado que nos permitio acceder a lá máquina
+### Vulnerable SUID file
+El SUID checker, no es que sea vulnerable perse, es que es realmente una backdoor para ser autentificado como root
