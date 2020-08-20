@@ -236,7 +236,6 @@ Esto es una todo list, si la máquina es de HTB, o THM y no esta en la lista es 
 ## Hard
 ### Free
 * Brainpan 1
-* Tweety CTF
 * Jigsaw
 * Jigsaw 2
 * Inoculation
