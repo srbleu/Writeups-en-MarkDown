@@ -8,7 +8,7 @@ Tenemos abiertos casi todos los puertos, de hecho todos menos el ssh que esta fi
 ```
 Jerry is a new developer and has made a few mistakes!
 ```
-Parece un user vamos a testarlo en los principales servicios ftp,httpauth,smb
+Parece un user vamos a testarlo en los principales servicios ftp,http o smb
 
 ### FTP
 ```
@@ -60,3 +60,14 @@ Para el cual existe un exploit bien conocido
 https://www.exploit-db.com/exploits/41154
 ```
 Pasamos el exploit a la máquina usando un servidor HTTP de Python y ya estaría
+
+# Analisís de la intrusión
+### Bad password police
+Las credenciales del usuario Jerrie estan presentes en diccionarios comunes lo que nos permite lanzar un ataque de fuerza bruta exitosa
+### Reutilización de credenciales
+Las creds de Jerries para el FTP y el SSH son las mismas, lo que permite que obteniendo la credencial de un servicio tomemos el servicio entero
+### screen-4.05.0 SUID
+Existe una vulnerabilidad en este servicio que permite escalar privilegios mediante un exploit
+# Solucione
+### screen-4.05.0 SUID
+Existe un parche en la siguiente version que remedia el fallo
