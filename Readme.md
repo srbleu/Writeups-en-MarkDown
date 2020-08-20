@@ -259,6 +259,8 @@ Esto es una todo list, si la máquina es de HTB, o THM y no esta en la lista es 
 * Jeff
 * Ra
 * Anonymous Playground
+* Looking Glass
+* Spring
 ### VIP
 * Jurassic Park
 * Jack
