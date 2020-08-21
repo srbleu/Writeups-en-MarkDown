@@ -42,3 +42,9 @@ Ejecutamos lo siguiente
 sudo perl -e 'exec "/bin/bash";'
 ```
 Y obtenemos shell como root
+
+# Analisís de la intrusión
+### Shellsock 
+La presencia de un script de gci en el servidor apache nos permitió obtener shell como shelly mediante la vulnerabilidad conocida como Shellshock, esta vulnerabilidad aprovechaba un fallo en la logica de la creacion de variables y la función export para obtener un RCE 
+### Privileged perl execution
+Se permite al usuario shelly ejecutar script de perls con privilegios elevados, funcionalidad de la que podemos abusar para spawnear una shell con esos mismos permisos
