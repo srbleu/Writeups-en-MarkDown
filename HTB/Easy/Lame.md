@@ -49,7 +49,7 @@ drwxr-xr-x    2 0        65534        4096 Mar 17  2010 .
 drwxr-xr-x    2 0        65534        4096 Mar 17  2010 ..
 226 Directory send OK.
 ```
-La version de FTP es vulnerable a el CVE-2011-2523
+La version de FTP es la vulnerable a el CVE-2011-2523
 
 ### SMB 
 Buscando la versión de Samba presente en la máquina con searchsploit encontramos que es vulnerable a:
@@ -76,3 +76,6 @@ Siendo root tendremos acceso a la flag del user sin problema
 wc -c /home/makis/user.txt
 33 /home/makis/user.txt
 ```
+# Analisís de la intrusión
+### CVE 2007-2447 
+La funcionalidad MS-RPC en mbd en Samba 3.0.0 hasta la 3.0.25rc3 permite a atacantes remotos ejecutar comandos de manera arbitraria sin ncesidad de autentificacion previa , la solución esta en parchear.
