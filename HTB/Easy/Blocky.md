@@ -1,4 +1,4 @@
-# Beep ![Avatar](https://www.hackthebox.eu/storage/avatars/f412784c311bdf52c3655381d2c9cd21_thumb.png)
+# Blocky ![Avatar](https://www.hackthebox.eu/storage/avatars/f412784c311bdf52c3655381d2c9cd21_thumb.png)
 
 ## Initial Scan
 ```nmap
@@ -89,3 +89,9 @@ Matching Defaults entries for notch on Blocky:
 User notch may run the following commands on Blocky:
     (ALL : ALL) ALL
 ```
+
+# Analisís de la intrusión
+### Sensible data exposure
+En los archivos expuestos de la app tenemos un .jar con credenciales hardcodeadas las cuales podemos usar para logearnos en el CMS
+### Reutilización de contraseñas
+Se ha usado la misma contraseña àra el CMS y el sistema de modo que al comprometerse un servicio del usuario se comprometieron varios
