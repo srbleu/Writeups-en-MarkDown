@@ -161,4 +161,7 @@ exploit/windows/local/ms10_015_kitrap0d
 ```
 Y con eso ya podriamos leer las dos flags
 
-https://www.hackthebox.eu/storage/avatars/f412784c311bdf52c3655381d2c9cd21_thumb.png
+# Analisís de la intrusión
+### FTP Login Anonymous habilitado
+Podemos gestionar los archivos del servidor mediante el servicio FTP pero sin ningún tipo de autentificación, pudiendo descargar y subir archivos arbitarios
+
