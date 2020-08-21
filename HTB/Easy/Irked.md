@@ -131,4 +131,10 @@ Ahora solo nos queda leer la root flag
 root@irked:/root# wc -c root.txt 
 33 root.txt
 ```
-https://www.hackthebox.eu/storage/avatars/f412784c311bdf52c3655381d2c9cd21_thumb.png
+# Analisís de la intrusión
+### CVE 2010-2075
+La versión del IRC presentea una vulnerabilidad RCE que nos permitio obtener una shell en el sistema
+### Sensible data leak
+Las contraseñas del usuario han sido guardadads bajo esteganografia en el servicio web, esto es una mala practica que nos ha conducido a acceder como djmardov
+### Viewuser SUID
+Existe un binario con SUID que nos permitio elevar privilegios por una mala gestión de acceso a archivos por parte del mismo, llamando a un archivo en /tmp que podemos modificar para que ejecute lo que queramos
