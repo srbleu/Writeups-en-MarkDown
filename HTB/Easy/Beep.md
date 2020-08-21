@@ -128,3 +128,6 @@ uid=0(root) gid=0(root) groups=0(root),1(bin),2(daemon),3(sys),4(adm),6(disk),10
 [root@beep ~]# find / -name user.txt -exec wc -c {} \; 2>/dev/null
 33 /home/fanis/user.txt
 ```
+# Analisís de la intrusiín
+### Sensible data leak
+Por una mala congiguración de la aplicacion web (de la propia aplicacion no de la administración) los archivos de configuración del servicio, con las contraseñas hardcodeadas ha quedado expuesto
