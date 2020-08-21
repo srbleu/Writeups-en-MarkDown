@@ -40,3 +40,15 @@ Y solo faltaría conseguir leer la flag
 ```cmd
 C:\Users\Administrator\Desktop\flags>type 2*
 ```
+# Analisís de la intrusión
+### Default creds
+El uso de las credenciales por defecto para el acceso a Tomcat nos permitio comprometer el servicio Tomcat
+### Unrstricted file upload
+La permisión de subir archivos war sin control desde el menu de Tomcat nos permitio subir una reverse shell permitiendonos full RCE como Tomcat
+
+# Solucion
+### Unrestricred file upload
+Para mitigar esta posibilidad habria que cambiar la siguiente linea en el archivo de comfiguracion de tomcat
+```
+            unpackWARs="true" autoDeploy="true">
+```
