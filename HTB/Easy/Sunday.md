@@ -134,3 +134,12 @@ User sunny may run the following commands on this host:
     (root) NOPASSWD: /root/troll
 ```
 Podemos sobreescribir con nuestro /bin/bash , el de nuestra máquina ese binario usando la opcion de Post.
+
+# Analiśis de la intrusión
+### Bad Password Policie
+La politica de contraseñas del sistma es debil ya que las del user sammmy estan presentes en rockyou
+### SSH Bruteforcing allowed
+No existe ningún servicio como fail2ban en la máquina lo que nos permite lanzar un ataque de fuerza bruta de manera exitosa contra la misma
+### Privileged wget execution
+Desde el usuario sunny podemos ejecutar wget como sudo, esto nos permite leer y escribir en archivos de manera arbitraria
+
