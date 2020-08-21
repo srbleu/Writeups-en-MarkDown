@@ -1,4 +1,4 @@
-# Bank ![Avatar]()
+# Mirai ![Avatar](https://www.hackthebox.eu/storage/avatars/4ef1ea77e69185063d4200d7d0142baa_thumb.png)
 
 ## Initial Scan
 ```
@@ -22,9 +22,7 @@
 ```
 
 ## Enum
-
 ### HTTP 80
-
 #### Gobuster
 ```
 /admin (Status: 301)
@@ -37,14 +35,12 @@ En /admin tenmos una consola de administracion de una pi-hole, indicador de que 
 Las creds defaults de una raspberry son pi:raspberry , probamos en el ssh y podemos logearnos sin ningún problema
 
 ## Privesc 
-
 #### Sudo -l 
 ```
 User pi may run the following commands on localhost:
     (ALL : ALL) ALL
     (ALL) NOPASSWD: ALL
 ```
-
 Pero al mirar la root flag encontramos lo siguiente
 ```
 I lost my original root.txt! I think I may have a backup on my USB stick...
@@ -67,3 +63,7 @@ grep --binary-files=text --context=100 'root' /dev/sdb
 ```
 
 Y ahi podemos ver la flag3d3e483143ff12ec505d026fa13e020b3d3e483143ff12ec505d026fa13e020b
+
+# Analisís de la intrusión
+### Default creds
+Las contraseñas para la raspberry no han sido cambiadas de las estandar lo que nos permitio acceder a la maquina
