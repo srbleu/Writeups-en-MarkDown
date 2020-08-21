@@ -78,3 +78,9 @@ Sustituimos este en la parte correspondiente del exploit`y lo lanzamos
 python ms08_067_2018.py 10.10.10.4 6 445
 ```
 Y ya estaría
+
+# Analisís de la intrusión
+### CVE-2017-0144, MS17-010 , Eternalblue
+La máquina objetivo presentaba la vulnerabilidad conocida como Eternalblue que permite RCE en la máquina objetivo.
+### CVE-2008-4250 , MS08-67 ,Server Service Vulnerability
+La máquina objetivo presentaba una vulnerabilidad que permitía RCE mediante una petición RPC maliciosa.
