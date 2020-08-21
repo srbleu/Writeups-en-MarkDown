@@ -31,7 +31,6 @@ https://www.exploit-db.com/exploits/47691
 Usandolo obtenemos una shell como www-data
 
 ## Local recon
-
 ### Enumeramos usuarios con acceso via shell
 ```
 $ cat /etc/passwd | grep 'bash'
@@ -142,3 +141,12 @@ root.txt
 33 root.txt
 ```
 
+# Analisís de la intrusión
+### Open Net Admin vuln
+Existe una vulnerabilidad documentada en el servicio de open net admin de la máquina
+### No hashing
+Las contraseñas del servicio de base de datos se almacenan en texto plano lo que nos permito leer las credenciales de jimmy y acceder 
+### Bad password police
+La contraseña de la clave RSA de joahna esta presente en rockyou.txt, esto nos permito acceder a su cuenta
+### Privileged nano execution
+Se nos permite utilizar nano con ciertos privilegios con un usuario, el problema esta en que podemos ejecutar comandos arbitrarios desde nano
