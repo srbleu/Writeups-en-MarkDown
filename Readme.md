@@ -21,7 +21,6 @@ Esto es una todo list, si la máquina es de HTB, o THM y no esta en la lista es 
 * ServMon
 * Buff
 ### Linux
-* Nibbles
 * Valentine
 * Frolic
 * Curling
@@ -227,6 +226,7 @@ Esto es una todo list, si la máquina es de HTB, o THM y no esta en la lista es 
 * Recovery
 * Attacktive Directory
 * Harder
+* Relevant
 ### VIP
 * NoNameCTF
 * Binex
@@ -258,6 +258,7 @@ Esto es una todo list, si la máquina es de HTB, o THM y no esta en la lista es 
 * Anonymous Playground
 * Looking Glass
 * Spring
+* Internal
 ### VIP
 * Jurassic Park
 * Jack
