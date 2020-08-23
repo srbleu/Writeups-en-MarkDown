@@ -33,4 +33,10 @@ Disallow: /writeup/
 Como podemos ver hay un dir deshabilitado veamos que hay dentro
 
 #### Writeup
-Wappalyzer nos dice directamente que la página usa CMS Made Simple, veamos si algun exploit conocido del CMS es viable
+Wappalyzer nos dice directamente que la página usa CMS Made Simple, hay varios CVE para este CMS pero no sabemos la version exacta asi que enumeremos mas a ver si la descubrimos
+```
+/administrator <- Login
+```
+Encontramos el endpoint de login pero ademas encontramos una pieza clave, el Copyright es 2004-2019,asi que deben estar en la version de 2019, eso acota bastante la búsqueda de exploits para el servicio
+### CVE-2019-9053
+Este CVE parece un buen candidato ya que concede acceso sin necesidad de autenticación previa, busquemos un script para explotar esta time based sqli
