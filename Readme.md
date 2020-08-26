@@ -177,7 +177,6 @@ Esto es una todo list, si la máquina es de HTB, o THM y no esta en la lista es 
 ## Easy
 ### Free
 * Ignite
-* SimpleCTF 
 * Agent sudo
 * BluePrint
 * LazyAdmin
