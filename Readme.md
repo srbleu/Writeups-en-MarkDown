@@ -177,13 +177,11 @@ Esto es una todo list, si la máquina es de HTB, o THM y no esta en la lista es 
 ## Easy
 ### Free
 * Ignite
-* Agent sudo
 * BluePrint
 * LazyAdmin
 * Madness
 * The Cod Capper
 * Tony the tiger
-* Introduction to django
 ### VIP
 * Vulnersity
 * ToolsRus
