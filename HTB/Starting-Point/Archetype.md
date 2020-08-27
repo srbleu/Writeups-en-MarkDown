@@ -76,3 +76,4 @@ Verificamos que tenemos permiso como sysadmin
 ```
 SELECT IS_SRVROLEMEMBER ('sysadmin')
 ```
+
