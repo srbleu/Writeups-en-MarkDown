@@ -72,3 +72,7 @@ Bien con esto tenemos un RCE ya que el server nos permite ejecutar comandos de C
      sp_start_job {cmd}         - executes cmd using the sql server agent (blind)
      ! {cmd}                    - executes a local shell cmd
 ```
+Verificamos que tenemos permiso como sysadmin
+```
+SELECT IS_SRVROLEMEMBER ('sysadmin')
+```
