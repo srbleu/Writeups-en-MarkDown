@@ -89,3 +89,6 @@ Podemos ver las contraseñas hardcodeadas
 net.exe use T: \\Archetype\backups /user:administrator MEGACORP_4dm1n!!
 ```
 Con esto solo nos queda logearnos como administrador, usaremos para ello usaremos la utilidad psexec.py de la suite de impacket
+# Analísís de la intrusión
+### Sensible data leak
+Los shares de SMB incluyen archivos con backups de las contraseñas de un usuario para el servicio de MS SQL, lo que nos permitio acceder al sistema
