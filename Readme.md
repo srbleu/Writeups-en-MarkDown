@@ -1,5 +1,15 @@
 Esto es una todo list, si la máquina es de HTB, o THM y no esta en la lista es que tengo por aquí el writeup (OJO solo máquinas los challs era mas feo organizarlos)
 # Hackthebox 
+## Starting Point
+### Windows
+* Shield
+* Pathfinder
+* MarkupPathfinder
+### Linux
+* Guard
+* Oopsie
+* Vaccine
+* Included
 ## Easy 
 ### Windows
 * Hacer el privesc de Devel w/o Metasploit
