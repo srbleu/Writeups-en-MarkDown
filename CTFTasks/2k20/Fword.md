@@ -8,7 +8,7 @@ Password: FwordxKahla
 Author: KAHLA*
 
 Nos conectamos a la máquina objetivo y vemos que hay un flag.txt en el /home de nuestro usuario owneado por el root, despues de checkear vectores normales encontramos una capabilite poco comun
-```
+```bash
 /usr/bin/tar = cap_dac_read_search+ep
 ```
 Con esto podremos leer la flag sin problema al igual que cualquier otro archivo owned por root, ejecutamos lo siguiente
