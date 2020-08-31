@@ -14,7 +14,7 @@ Nos conectamos a la máquina objetivo y vemos que hay un flag.txt en el /home de
 Con esto podremos leer la flag sin problema al igual que cualquier otro archivo owned por root, ejecutamos lo siguiente
 ```bash
 user1@c2002c8c2350:/home/user1$ /usr/bin/tar -cvf flag.tar /home/user1/flag.txt # Con esto obtenmos una copia comprimida del archivo
-/usr/bin/tar: Removing leading `/'' from member names
+/usr/bin/tar: Removing leading '/' from member names
 /home/user1/flag.txt
 user1@c2002c8c2350:/home/user1$ /usr/bin/tar -xvf flag.tar # Con esto lo descomprimimos
 home/user1/flag.txt
