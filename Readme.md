@@ -211,7 +211,7 @@ Esto es una todo list, si la máquina es de HTB, o THM y no esta en la lista es 
 * UltraTech
 * WebGramming
 * StuxtCTF
-* Boiler CTF
+* The Blob Blog
 * Develpy
 * Biohazard
 * Node 1
@@ -222,7 +222,6 @@ Esto es una todo list, si la máquina es de HTB, o THM y no esta en la lista es 
 * hackerNote
 * dogcat
 * Nax
-* KothFood
 * KothHackers
 * ConvertMyVideo
 * Anonymous
