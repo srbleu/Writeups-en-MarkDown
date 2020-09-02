@@ -204,6 +204,7 @@ Esto es una todo list, si la máquina es de HTB, o THM y no esta en la lista es 
 * Erit Securus I
 ## Medium
 ### Free
+* WWBuddy
 * uopeasy
 * Mr Robot CTF
 * GoldenEye
