@@ -74,4 +74,3 @@ Al ultimo string le aplicamos dec to ascii , y lueoo base64 -d y obtenemos algo 
 ```
 Lo crackeamos y sale kidding
 
-Tiene pinta de que los tiros van a ir por el joomla pero me voy a desconectar por hoy
