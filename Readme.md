@@ -191,7 +191,6 @@ Esto es una todo list, si la máquina es de HTB, o THM y no esta en la lista es 
 * The Cod Capper
 * Tony the tiger
 ### VIP
-* Vulnersity
 * ToolsRus
 * Game Zone
 * Skynet
@@ -205,24 +204,19 @@ Esto es una todo list, si la máquina es de HTB, o THM y no esta en la lista es 
 ## Medium
 ### Free
 * WWBuddy
-* uopeasy
 * Mr Robot CTF
 * GoldenEye
 * UltraTech
-* WebGramming
 * StuxtCTF
 * The Blob Blog
 * Develpy
 * Biohazard
-* Node 1
-* LaxCTF
 * HA Joker CTF
-* Djinn 
 * CMesS
 * hackerNote
 * dogcat
 * Nax
-* KothHackers
+* Kot hHackers
 * ConvertMyVideo
 * Anonymous
 * Gatekeeper
@@ -230,20 +224,17 @@ Esto es una todo list, si la máquina es de HTB, o THM y no esta en la lista es 
 * Attacktive Directory
 * Harder
 * Relevant
+* Ghizer
 ### VIP
-* NoNameCTF
 * Binex
 * Brainstorm
 * HackPark
 ## Hard
 ### Free
 * Brainpan 1
-* Jigsaw
-* Jigsaw 2
 * Inoculation
 * Adventure Time
 * Borderlands
-* SESH Birthday CTF
 * hc0n Christmas CTF
 * Retro
 * Daily Bugle
