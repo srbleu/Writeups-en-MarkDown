@@ -41,7 +41,6 @@ Esto es una todo list, si la máquina es de HTB, o THM y no esta en la lista es 
 * Haystack
 * Safe
 * Networked
-* Postman
 * Admirer
 * Blunder
 * Tabby
@@ -225,6 +224,7 @@ Esto es una todo list, si la máquina es de HTB, o THM y no esta en la lista es 
 * Harder
 * Relevant
 * Ghizer
+* Jacobtheboss
 ### VIP
 * Binex
 * Brainstorm
