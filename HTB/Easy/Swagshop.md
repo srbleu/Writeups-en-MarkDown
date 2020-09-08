@@ -118,3 +118,40 @@ La URL esta mal realmente es http://10.10.10.140/index.php/admin, nada mas logea
  Your web server is configured incorrectly. As a result, configuration files with sensitive information are accessible from the outside. Please contact your hosting provider.
  ```
  Probablemtente se refiera a las creds ya encontradas
+ 
+### Froghopper
+Encontramos una vuln RCE que parece ser plausible para escalar privilegios aquí
+```
+https://www.foregenix.com/blog/anatomy-of-a-magento-attack-froghopper
+```
+Vayamos paso por paso
+* 1. Vamos a System -> Congifuration -> Development -> Templates y habilitamos una opcion que permite los symlinks
+* 2. Crafteamos la imagen malicios añadiendo al final de una imagen normal el codigo para una reverse shell en PHP (shell.php.png) y la subimos a Catalog->Manage Categories 
+* 3. El momento de aprovechar los symlinks, nos vamos a la pestaña de templates y creamos una nueva donde cambiaremos el link que sale por el siguiente:
+```
+block type='core/template' template='../../../../../../media/catalog/category/shell.php.png'
+```
+* 4. Abrimos un listener en local para la reverse shell
+* 5. Le damos a preview template 
+* 6. Enjoy reverse shell
+
+## Privesc
+```
+User www-data may run the following commands on swagshop:
+    (root) NOPASSWD: /usr/bin/vi /var/www/html/*
+```
+Ejecutamos lo siguiente:
+```
+sudo /usr/bin/vi /var/www/html/get.php
+> :!sh
+# /bin/bash
+root@swagshop:~# id
+uid=0(root) gid=0(root) groups=0(root)
+```
+# Analisís de la intrusión
+##  CVE-2015-1397
+Este CVE nos permitio obtener un usuario con acceso en el CMS mediante una SQLi
+## Froghopper
+Magento permite obtener un RCE  mediante una imagen con codigo php, la activacion de symlinks y una template
+## Privileged vi execution
+El usuario www-data tiene permiso para ejecutar vi como root
