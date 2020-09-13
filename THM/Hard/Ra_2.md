@@ -276,6 +276,10 @@ dig ANY windcorp.thm @10.10.55.72
 windcorp.thm.		3600	IN	NS	fire.windcorp.thm.
 windcorp.thm.		3600	IN	SOA	fire.windcorp.thm. hostmaster.windcorp.thm. 291 900 600 86400 3600
 ```
+Aqui encontramos lo siguiente tambien:
+```
+Allowing nonsecure dynamic updates is a significant security vulnerability because updates can be accepted from untrusted sources
+```
 ### Kebrute
 ```
 kebrute userenum --dc windcorp.thm -d windcorp.thm usernames.txt
