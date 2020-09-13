@@ -389,3 +389,5 @@ uzunLM+3131      (buse)
 Con esas creds podemos acceder al servicio de administracion del puerto 443
 
 ## Privesc
+Con las cred + evilwinRM podemos acceder al sistema y leer la flag 2
+
