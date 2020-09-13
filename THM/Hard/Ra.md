@@ -390,4 +390,18 @@ Con esas creds podemos acceder al servicio de administracion del puerto 443
 
 ## Privesc
 Con las cred + evilwinRM podemos acceder al sistema y leer la flag 2
+Si desde esa cuenta accedemos a C:\ podemos ver una carpeta llamada scripts
+```
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-----         5/2/2020   6:33 AM                inetpub
+d-----        9/15/2018  12:19 AM                PerfLogs
+d-r---         5/8/2020   7:43 AM                Program Files
+d-----         5/7/2020   2:51 AM                Program Files (x86)
+d-----         5/3/2020   5:48 AM                scripts
+d-----        5/29/2020   5:45 PM                Shared
+d-r---         5/2/2020   3:05 PM                Users
+d-----        5/30/2020   7:00 AM                Windows
+```
+
 
