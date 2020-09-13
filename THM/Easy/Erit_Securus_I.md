@@ -22,4 +22,4 @@ Bolt CMS 3.6.6 - Cross-Site Request Forgery / Remote Code Execution             
 Bolt CMS 3.7.0 - Authenticated Remote Code Execution                                                             | php/webapps/48296.py
 Bolt CMS < 3.6.2 - Cross-Site Scripting                                                                          | php/webapps/46014.txt
 ```
-Enumerando no encontre creds, asi que voy a probar con el 48296.py con las creds admin:password que son las default
+No tenemos creds pero admin:pasword funcionan perfectamente en el endpoint de administración, gracias a ello sabemos que la versión es la 3.7
