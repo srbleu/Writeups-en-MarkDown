@@ -245,7 +245,6 @@ Esto es una todo list, si la máquina es de HTB, o THM y no esta en la lista es 
 * Year of the fox
 * Dave's Blog
 * Jeff
-* Ra
 * Anonymous Playground
 * Looking Glass
 * Spring
