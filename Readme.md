@@ -196,7 +196,6 @@ Esto es una todo list, si la máquina es de HTB, o THM y no esta en la lista es 
 * Corp
 * Alfred
 * Avengers Blog
-* Erit Securus I
 ## Medium
 ### Free
 * Snowball
@@ -213,12 +212,11 @@ Esto es una todo list, si la máquina es de HTB, o THM y no esta en la lista es 
 * hackerNote
 * dogcat
 * Nax
-* Kot hHackers
+* Kot Hackers (la deje pr que todo requeria brute forcing)
 * ConvertMyVideo
 * Anonymous
 * Gatekeeper
 * Recovery
-* Attacktive Directory
 * Harder
 * Relevant
 * Ghizer
