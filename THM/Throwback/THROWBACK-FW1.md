@@ -44,5 +44,10 @@ Last Login 8/9/2020 15:51 -- HumphreyW:1c13639dba96c7b53d26f7d00956a364
 ```
 Crackeamos la pass securitycenter
 
-
-
+### /etc/spwd.db
+Aquí encontraremos los hashes de varios usuarios
+```
+admin:$2y$10$q81moODbYy1KXoLJxIoc1uXlpBKeSCiieaKiNxjPqTLmNZY3n/Fga
+ec2-user:$2y$10$zae.EdVMDyWWVJGAQEOtdO7fTAp.6BWOeFnSYf7qV45rjsnKg0DEC
+root:$2y$10$q81moODbYy1KXoLJxIoc1uXlpBKeSCiieaKiNxjPqTLmNZY3n/Fga
+```
