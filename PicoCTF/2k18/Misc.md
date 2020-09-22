@@ -92,8 +92,32 @@ env | grep pico
 Flag:picoCTF{eNv1r0nM3nT_v4r14Bl3_fL4g_3758492}
 
 ## SSH-Keyz
+*As nice as it is to use our webshell, sometimes its helpful to connect directly to our machine. To do so, please add your own public key to ~/.ssh/authorized_keys, using the webshell. The flag is in the ssh banner which will be displayed when you login remotely with ssh to with your username.*
+Generamos una clave desde el server
+```
+@pico-2018-shell:~/.ssh$ ssh-keygen
+### Rellenamos los datos
+@local-shell: ssh -i ~/.ssh/pico user@2018shell4.picoctf.com
+```
+Y la flag estaria en el banner
+Flag: picoCTF{who_n33ds_p4ssw0rds_38dj21}
 ## What base it is?
+*To be successful on your mission, you must be able read data represented in different ways, such as hexadecimal or binary. Can you get the flag from this program to prove you are ready? Connect with nc 2018shell.picoctf.com 64706.*
+Si bien puede que este planteado para hacer un script, el timer que te dan es suficiente para hacer el decoding a mano bin,hex,oct
+Flag: picoCTF{delusions_about_finding_values_5b21aa05}
 ## You can't see me
+*'...reading transmission... Y.O.U. .C.A.N.'.T. .S.E.E. .M.E. ...transmission ended...' Maybe something lies in /problems/you-can-t-see-me_2_cfb71908d8368e3062423b45959784aa.*
+Dentro de la carpeta vemos esto
+```
+drwxr-xr-x   2 root       root        4096 Mar 25  2019 .
+-rw-rw-r--   1 hacksports hacksports    57 Mar 25  2019 .  
+drwxr-x--x 556 root       root       53248 Mar 25  2019 ..
+```
+Ese archivo llamado . parece ser la clave
+```
+grep -r "pico" .
+```
+Flag: picoCTF{j0hn_c3na_paparapaaaaaaa_paparapaaaaaa_093d6aff}
 ## Absolutely Relative
 ## In out error
 ## Learn gdb
