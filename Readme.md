@@ -221,6 +221,8 @@ Esto es una todo list, si la máquina es de HTB, o THM y no esta en la lista es 
 * Relevant
 * Ghizer
 * Jacobtheboss
+* Aster
+* One Piece
 ### VIP
 * Binex
 * Brainstorm
@@ -248,6 +250,7 @@ Esto es una todo list, si la máquina es de HTB, o THM y no esta en la lista es 
 * Looking Glass
 * Spring
 * Internal
+* For Bussiness Reasons
 ### VIP
 * Jurassic Park
 * Jack
