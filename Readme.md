@@ -42,6 +42,7 @@ Esto es una todo list, si la máquina es de HTB, o THM y no esta en la lista es 
 * Admirer
 * Blunder
 * Tabby
+* Doctor
 ### Others
 * Sense
 ## Medium
@@ -120,6 +121,7 @@ Esto es una todo list, si la máquina es de HTB, o THM y no esta en la lista es 
 * RE
 * Control
 * Blackfield
+* Reel2
 ### Linux
 * Joker
 * Holiday
@@ -149,6 +151,7 @@ Esto es una todo list, si la máquina es de HTB, o THM y no esta en la lista es 
 * Intense
 * Unbalanced
 * Feline
+* Compromised
 ## Insane
 ### Windows
 * Minion
@@ -178,6 +181,7 @@ Esto es una todo list, si la máquina es de HTB, o THM y no esta en la lista es 
 * Dyplesher
 * RopeTwo
 * Laser
+* Crossfit
 ### Others
 * Fortune
 # THM
