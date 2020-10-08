@@ -23,7 +23,6 @@ Esto es una todo list, si la máquina es de HTB, o THM y no esta en la lista es 
 * Access
 * Netmon
 * Bastion
-* Heist
 * Forest
 * Nest
 * Sauna
