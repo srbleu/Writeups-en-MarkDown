@@ -19,4 +19,4 @@ Si lo decodificamos nos queda el siguiente texto:
 ```
 R1PSAMU3LM0RS3
 ```
-Flag: **R1PSAMU3LM0RS3**
+Flag: **HTB{R1PSAMU3LM0RS3}**
