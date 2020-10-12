@@ -104,6 +104,7 @@ Esto es una todo list, si la máquina es de HTB, o THM y no esta en la lista es 
 * Magic
 * Cache
 * SneakyMailer
+* Jevel
 ### Others
 * Poison
 * Ypuffy
@@ -225,6 +226,7 @@ Esto es una todo list, si la máquina es de HTB, o THM y no esta en la lista es 
 * Ghizer
 * Aster
 * One Piece
+* Revenge
 ### VIP
 * Binex
 * Brainstorm
