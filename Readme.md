@@ -191,7 +191,6 @@ Esto es una todo list, si la máquina es de HTB, o THM y no esta en la lista es 
 * Madness
 * The Cod Capper
 * Tony the tiger
-* Psycho Break
 ### VIP
 * ToolsRus
 * Game Zone
@@ -256,6 +255,7 @@ Esto es una todo list, si la máquina es de HTB, o THM y no esta en la lista es 
 * Internal
 * For Bussiness Reasons
 * Motunui
+* Misguided ghosts
 ### VIP
 * Jurassic Park
 * Jack
