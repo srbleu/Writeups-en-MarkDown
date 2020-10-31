@@ -471,10 +471,134 @@ Salimos a nuestro sistema y nos logeamos con el siguiente usuario usando la clav
 ssh bandit26@bandit.labs.overthewire.org -p 2220
 ```
 ## Level 27
+*Good job getting a shell! Now hurry and grab the password for bandit27!*
+Podemos ejcutar comandos de la siguiente manera:
+```
+3ba3118a22e93127a4ed485be72ef5ea
+```
 ## Level 28
+*There is a git repository at ssh://bandit27-git@localhost/home/bandit27-git/repo. The password for the user bandit27-git is the same as for the user bandit27.*
+Creamos una carpeta en /tmp y nos vamos a la misma 
+```
+git clone ssh://bandit27-git@localhost/home/bandit27-git/repo
+cat repo/README
+The password to the next level is: 0ef186ac70e04ea33b4c1853d2526fa2
+```
+Al siguiente
 ## Level 29
+*There is a git repository at ssh://bandit28-git@localhost/home/bandit28-git/repo. The password for the user bandit28-git is the same as for the user bandit28.*
+Creamos una carpeta en /tmp y nos vamos a la misma 
+```
+git clone ssh://bandit28-git@localhost/home/bandit27-git/repo
+cat repo/README
+```
+Nos faltan datos:
+```
+# Bandit Notes
+Some notes for level29 of bandit.
+
+## credentials
+
+- username: bandit29
+- password: xxxxxxxxxx
+```
+Tirando de git log vemos este cambio
+```
+-- password: bbc96594b4e001778eee9975372716b2
++- password: xxxxxxxxxx
+```
 ## Level 30
+*There is a git repository at ssh://bandit29-git@localhost/home/bandit29-git/repo. The password for the user bandit29-git is the same as for the user bandit29.*
+Creamos una carpeta en /tmp y nos vamos a la misma 
+```
+git clone ssh://bandit29-git@localhost/home/bandit27-git/repo
+cat repo/README
+```
+Nos faltan datos:
+```
+# Bandit Notes
+Some notes for bandit30 of bandit.
+
+## credentials
+
+- username: bandit30
+- password: <no passwords in production!>
+```
+Podemos ver que existen otras branchs
+```
+git branch -r
+  origin/HEAD -> origin/master
+  origin/dev
+  origin/master
+  origin/sploits-dev
+```
+Cambiamos de brach
+```
+git checkout dev
+```
+Miramos ahora los logs
+```
+-- password: <no passwords in production!>
++- password: 5b90576bedb2cc04c86a9e924ce42faf
+```
 ## Level 31
+*There is a git repository at ssh://bandit30-git@localhost/home/bandit30-git/repo. The password for the user bandit30-git is the same as for the user bandit30.*
+Creamos una carpeta en /tmp y nos vamos a la misma 
+```
+git clone ssh://bandit30-git@localhost/home/bandit27-git/repo
+cat repo/README
+```
+Trolled:
+```
+just an epmty file... muahaha
+```
+Buscamos una tag 
+```
+git tag
+ secret
+git show secret
+47e603bb428404d265f59c42920d81e5
+```
 ## Level 32
+*There is a git repository at ssh://bandit31-git@localhost/home/bandit31-git/repo. The password for the user bandit31-git is the same as for the user bandit31.*
+Clonamos el repo y taly vemos el readme
+```
+This time your task is to push a file to the remote repository.
+
+Details:
+    File name: key.txt
+    Content: 'May I come in?'
+    Branch: master
+```
+Bien las intruscciones son claras
+```
+bandit31@bandit:/tmp/patetico/repo$ echo 'May I come in?' > key.txt
+bandit31@bandit:/tmp/patetico/repo$ git add -f key.txt 
+bandit31@bandit:/tmp/patetico/repo$ git commit -m "uwu"
+```
+Al hacer el push da error por lo siguiente:
+```
+remote: ### Attempting to validate files... ####
+remote: 
+remote: .oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.
+remote: 
+remote: Well done! Here is the password for the next level:
+remote: 56a9bf19c63d650ce78e6ec0354ee45e
+remote: 
+remote: .oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.
+remote: 
+```
+A siguiente
 ## Level 33
+Ahora tenemos una restricted shell que pone en mayuscula lo que ponemos
+Si hacemos uso de la variable $0 podemos escapar 
+```
+>>>$0
+/bin/bash
+bandit33@bandit:~$ cat /etc/bandit_pass/bandit33
+c9c3199ddf4121b10cf581a98d51caee
+```
+Vayamos a por el ultimo
+
 ## Level 34
+GG!
