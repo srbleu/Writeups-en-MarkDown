@@ -105,6 +105,7 @@ Esto es una todo list, si la máquina es de HTB, o THM y no esta en la lista es 
 * Cache
 * SneakyMailer
 * Jevel
+* Time
 ### Others
 * Poison
 * Ypuffy
@@ -163,6 +164,7 @@ Esto es una todo list, si la máquina es de HTB, o THM y no esta en la lista es 
 * Hackback
 * Bankrobber
 * Multimaster
+* APT
 ### Linux
 * Brainfuck
 * Jail
