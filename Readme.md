@@ -17,7 +17,6 @@ Esto es una todo list, si la máquina es de HTB, o THM y no esta en la lista es 
 * Artic
 * Grandpa
 * Granny
-* Blue
 * Bounty
 * Active
 * Access
