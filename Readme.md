@@ -39,7 +39,6 @@ Esto es una todo list, si la máquina es de HTB, o THM y no esta en la lista es 
 * Networked
 * Admirer
 * Blunder
-* Tabby
 * Doctor
 ### Others
 * Sense
