@@ -36,3 +36,5 @@ Buscando el de Ghana encontramos una imagen de un edificio con la misma cristale
 Bien parece que lo tenemos es el Golden Tulip Accra Hotel
 
 [Casi la misma captura pero en google maps](https://www.google.com/maps/@5.5928872,-0.1806073,3a,75y,320.85h,84.77t/data=!3m6!1e1!3m4!1sWPmmsC_RNlOee9oNOBBLWw!2e0!7i13312!8i6656)
+
+Ahora las coordenadas **5°35'35.9"N 0°10'50.1"W**
