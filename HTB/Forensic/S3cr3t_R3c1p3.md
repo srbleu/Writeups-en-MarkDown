@@ -23,9 +23,9 @@ Raw_Inflate(0,0,'Adaptive',false,false)
 Con esto tendremos una segunda clave descarguemosla y llamemosla second.key, tras esto desencriptemos
 ``` 
 openssl rsautl -decrypt -inkey secondkey.rsa -in how_to_make_meth.txt
-```
 1. Chemicals
 2. Mix 'em
 3. HTB{5e59025ae4e2173cc372b7a890dddc75}
 4. Profit
 ```
+Flag **HTB{5e59025ae4e2173cc372b7a890dddc75}**
