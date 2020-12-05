@@ -1,6 +1,6 @@
 # CSIRT
 ## 0xB16B00B5 part 1
-![Description]()
+![Description](https://github.com/srbleu/Writeups-en-MarkDown/blob/master/CTFTasks/2k20/CERTUNLP2020/0xB16B00B51.png)
 
 Bien jugando con la información que tenemos la búsqueda fue 0xB16B00B5 malware chile
 Encontramos un [artículo](https://blog.segu-info.com.ar/2020/11/nuevo-ransomware-egregor-cencosud-jumbo.html) muy útil que nos cuenta que afecto a Cencosud
@@ -8,17 +8,29 @@ Encontramos un [artículo](https://blog.segu-info.com.ar/2020/11/nuevo-ransomwar
 Flag **Cencosud**
 
 ## 0xB16B00B5 part 2
-![Description]()
+![Description](https://github.com/srbleu/Writeups-en-MarkDown/blob/master/CTFTasks/2k20/CERTUNLP2020/0xB16B00B52.png)
 
-Si seguimos leyendo el articulo anterior veremos esta linea:
+Si seguimos leyendo el articulo anterior veremos una lista de IoC
 ```
-185.82.126.8 
++ C&C
+    185.82.126.8
++ IPs
+    185.238.0[.]233
+    45.153.242[.]129
+    217.8.117[.]147
+    91.199. 212[.]52 (FALSO POSITIVO, corresponde a un certificado de crt.sectigo.com)
++ Dominios principales
+    www.egregor[eliminado].*
+    egregor[eliminado]*.onion
+    *egregor.top
+    sekhmet*.*
 ```
+Así que la respuesta sería **185.82.126.8**
 ## 0xB16B00B5 part 3
-![Description]()
-Buscamos el Abuse Contact para ese bloque de IPS y encontramos que el contacto es **abuse@nano.lv**
+![Description](https://github.com/srbleu/Writeups-en-MarkDown/blob/master/CTFTasks/2k20/CERTUNLP2020/0xB16B00B53.png)
+Buscamos el Abuse Contact para ese bloque de IPS y encontramos que el contacto es **abuse@nano.lv** haciendo una query whois 
 ## Phishing
-![Description]()
+![Description](https://github.com/srbleu/Writeups-en-MarkDown/blob/master/CTFTasks/2k20/CERTUNLP2020/Phising.png)
 Bien lo primero fue checkear los registros DNS para este dominio
 ```
 dig TXT bankination.ctf.cert.unlp.edu.ar
