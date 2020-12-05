@@ -16,6 +16,7 @@ Si seguimos leyendo el articulo anterior veremos esta linea:
 ```
 ## 0xB16B00B5 part 3
 ![Description]()
+Buscamos el Abuse Contact para ese bloque de IPS y encontramos que el contacto es **abuse@nano.lv**
 ## Phishing
 ![Description]()
 Bien lo primero fue checkear los registros DNS para este dominio
