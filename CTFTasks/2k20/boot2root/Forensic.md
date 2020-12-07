@@ -1,6 +1,6 @@
 # Forensic
 ## Active Directory
-![Task Description]()
+![Task Description](https://github.com/srbleu/Writeups-en-MarkDown/blob/master/CTFTasks/2k20/boot2root/TaskForensicAD.png)
 
 Nos dan un dump de la carpeta de las policies de un Active Directory, lo primero es buscar el xml con la groups policies:
 ```xml
