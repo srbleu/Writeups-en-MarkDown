@@ -57,6 +57,7 @@ while(1 == 1):
 ```
 ### Parte 1
 ![Task Description](https://github.com/srbleu/Writeups-en-MarkDown/blob/master/CTFTasks/2k20/boot2root/VulnAdventure1.png)
+
 Cuando lanzamos el cliente, si hablamos con el hobit nos dira que la flag esta en la posición 9,9
 Viendo el código para el movimiento de las celdas vemos que no podemos con el codigo tal y como esta ya que no suma o resta si no que iguala, es decir en vez de sumar 1 o restar 1 a la posicion lo que hace es igualarla
 ```python
@@ -99,6 +100,7 @@ Flag **b00t2root{p4ck3t_inj3ct}**
 
 ### Parte 2
 ![Task Description](https://github.com/srbleu/Writeups-en-MarkDown/blob/master/CTFTasks/2k20/boot2root/VulnAdventure2.png)
+
 Bien para este hay dos caminos en su resolución ambos en estas 2 lineas:
 ```python
 dummyflag = 0
