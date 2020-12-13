@@ -1,6 +1,6 @@
 # Forensic
 ## Encrypted Storage 1
-![Task Description]()
+![Task Description](https://github.com/srbleu/Writeups-en-MarkDown/blob/master/CTFTasks/2k20/kks/Task1.png)
 
 Nos dan un filesystem que ha sdio encriptado por un ransom, pero podemos ver que es linux:
 ```bash
@@ -60,16 +60,16 @@ Archive:  zip/00000000.zip
 Flag **kks{n0t_s3cur3}**
 
 ## Encrypted Storage 2
-![Task Description]()
+![Task Description](https://github.com/srbleu/Writeups-en-MarkDown/blob/master/CTFTasks/2k20/kks/Task1.png)
 
-Bien, si nos fijamos bien en que es lo que se ha añadido al principio podemos ver lo siguiente:
+Bien, si nos fijamos bien en que es lo que se ha añadido al principio de cada archivo podemos ver lo siguiente:
 ```
 s_h3
 1_w4
 r3!}
 kks{
 ```
-Si lo ordenasos sabiendo el formato de la flag obtenemos lo siguiente:
+Si lo ordenamos sabiendo el formato de la flag obtenemos lo siguiente:
 
 Flag: **kks{1_w4s_h3r3!}**
 
