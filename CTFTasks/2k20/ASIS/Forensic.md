@@ -2,6 +2,7 @@
 
 ## Dream
 
+![Task](https://github.com/srbleu/Writeups-en-MarkDown/blob/master/CTFTasks/2k20/ASIS/Task.png)
 Nos dan un archivador con un archivo llamado flag.malformed si tiramos el comando file
 ```bash
 file flag.malformed 
@@ -57,7 +58,8 @@ Que se traducen en:
 AT&TFORM....DJV
 ```
 Si checkeamos las strings del archivo vemos que hay 2 FORM sin nada delante y antes los chunks nos han sacado dos form, hagamos un poco de magia con cyberchef quitando los bytes del principio
-![Cosos](PrimerCortayPega.png)
+
+![Cosos](https://github.com/srbleu/Writeups-en-MarkDown/blob/master/CTFTasks/2k20/ASIS/PrimerCortayPega.png)
 
 Tras esto guardameos el archivo como cyberfoo.djvu
 ```
@@ -71,7 +73,7 @@ Bueno no esta todo perdido, podemos sacar el primer chunk
 djvuextract cyberfoo.djvu ANTz=ANTz
 ```
 Y ademas tenemos otro FORM al que poner magic numbers, quizas asi podamos sacar algo mas, repitamos la operación
-![Cosos](SegundoCortayPega.png)
+![Cosos](https://github.com/srbleu/Writeups-en-MarkDown/blob/master/CTFTasks/2k20/ASIS/SegundoCortayPega.png)
 
 Tras esto guardameos el archivo como cyberfoo2.djvu
 ```
@@ -95,7 +97,8 @@ Con esto podemos restaurar el archivo ya que sabemos que parametros pasar a info
 djvumake flag.djvu INFO=2550,3300,300 Sjbz=Sjbz FGbz=FGbz BG44=BG44 TXTz=TXTz ANTz=ANTz
 ```
 Bien el archivo se puede abrir pero vaya joke:
-![xd](xd.png)
+
+![xd](https://github.com/srbleu/Writeups-en-MarkDown/blob/master/CTFTasks/2k20/ASIS/xd.png)
 
 Bien la flag esta escrita en blanco y no hay manera de leerla asi, vamos a seguir usando el toolkit de djvu
 ```
