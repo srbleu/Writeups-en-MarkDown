@@ -1,5 +1,5 @@
 # Complaint
-![Task]()
+![Task](https://github.com/srbleu/Writeups-en-MarkDown/blob/master/CTFTasks/2k20/X-MAS/Task.jpg)
 
 Bien tras hacer un par de pruebas parece que concatenar comandos funciona bien pero hay ciertas limitaciones:
 ```
